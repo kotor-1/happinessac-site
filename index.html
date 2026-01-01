@@ -270,6 +270,28 @@
     .news-window::-webkit-scrollbar-track {
       background: transparent;
     }
+
+    /* ===== YouTube Section Styles ===== */
+    .youtube-note {
+      color: #cfcfd6;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .youtube-link-wrap {
+      margin-top: 12px;
+    }
+
+    .youtube-link {
+      display: inline-block;
+      color: #ff2f92;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .youtube-link:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 
@@ -373,6 +395,36 @@
     </div>
   </section>
 
+  <!-- YouTube Section -->
+  <section id="youtube" class="mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
+    <div class="flex items-end justify-between gap-4 mb-6">
+      <div>
+        <div class="text-brand-pink font-bold tracking-widest text-xs">YOUTUBE</div>
+        <h2 class="text-2xl md:text-3xl font-bold">古藤監督のYouTube</h2>
+      </div>
+    </div>
+
+    <p class="youtube-note text-gray-300 text-sm md:text-base mb-4">
+      最新動画はYouTubeで配信中です。
+    </p>
+
+    <!-- YouTube Subscribe Button -->
+    <div class="g-ytsubscribe mb-4"
+         data-channelid="UCLC5S64sFXDtIyDJsINI2TQ"
+         data-layout="full"
+         data-count="default">
+    </div>
+
+    <div class="youtube-link-wrap">
+      <a href="https://www.youtube.com/@virds2761"
+         target="_blank"
+         rel="noopener"
+         class="youtube-link inline-block border border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white px-6 py-3 rounded-sm font-bold transition">
+        チャンネルを見る →
+      </a>
+    </div>
+  </section>
+
   <!-- Instagram Section -->
   <section id="instagram" class="mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
     <div class="flex items-end justify-between gap-4 mb-6">
@@ -392,26 +444,8 @@
     <script async src="//www.instagram.com/embed.js"></script>
   </section>
 
-  <!-- YouTube Section -->
-  <section id="youtube" class="mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
-    <div class="flex items-end justify-between gap-4 mb-6">
-      <div>
-        <div class="text-brand-pink font-bold tracking-widest text-xs">SOCIAL</div>
-        <h2 class="text-2xl md:text-3xl font-bold">古藤監督のYouTube</h2>
-      </div>
-    </div>
-
-    <iframe
-      width="100%"
-      height="315"
-      src="https://www.youtube.com/embed?listType=uploads&list=UUYQwP0v8RZzU1WvXy8rZ7LQ"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      style="width:100%; aspect-ratio:16/9; border:0; border-radius:12px;">
-    </iframe>
-  </section>
+  <!-- YouTube Platform Script（ページ内に1回だけ） -->
+  <script src="https://apis.google.com/js/platform.js"></script>
 
   <!-- クラス・会費 -->
   <section id="classes-link">
