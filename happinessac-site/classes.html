@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>クラス・会費 | HappinessAC</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              pink: '#ff2aa1',
+              black: '#0b0b0f',
+              dark:  '#121216',
+              gray:  '#1f1f2e'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            display: ['"Oswald"', 'sans-serif'],
+          },
+          backgroundImage: {
+            noise: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background:#0b0b0f; color:#fff; overflow-x:hidden; }
+    .clip-diagonal-rev{ clip-path:polygon(0 10%,100% 0,100% 100%,0 100%); }
+    .btn-glitch{ position:relative; overflow:hidden; transition:.25s; }
+    .btn-glitch::before{
+      content:''; position:absolute; inset:0; left:-120%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+      transition:.5s;
+    }
+    .btn-glitch:hover::before{ left:120%; }
+    ::-webkit-scrollbar{ width:8px; }
+    ::-webkit-scrollbar-track{ background:#0b0b0f; }
+    ::-webkit-scrollbar-thumb{ background:#ff2aa1; border-radius:4px; }
+    .sticky-cta{
+      position:fixed; left:0; bottom:0; width:100%;
+      z-index:60;
+      box-shadow:0 -6px 18px rgba(0,0,0,.35);
+      background:rgba(11,11,15,.95);
+      backdrop-filter: blur(10px);
+      border-top:1px solid rgba(255,42,161,.2);
+    }
+  </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-brand-pink selection:text-white pb-24 md:pb-0">
+
+  <!-- Global noise -->
+  <div class="fixed inset-0 bg-noise pointer-events-none z-50 mix-blend-overlay"></div>
+
+  <!-- Top mini nav -->
+  <div class="hidden md:block sticky top-0 z-40 bg-brand-black/80 backdrop-blur border-b border-white/5">
+    <div class="container mx-auto px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-display font-black italic tracking-tight text-xl">
+        HAPPINESS<span class="text-brand-pink">AC</span>
+      </a>
+      <nav class="text-sm font-bold text-gray-300 flex gap-6">
+        <a href="index.html#about" class="hover:text-white transition">指導軸</a>
+        <a href="classes.html" class="text-brand-pink hover:text-white transition">クラス</a>
+        <a href="classes.html#fees" class="hover:text-white transition">会費</a>
+        <a href="index.html#online" class="hover:text-white transition">オンライン</a>
+        <a href="coaches.html" class="hover:text-white transition">指導者</a>
+        <a href="index.html#join" class="text-brand-pink hover:text-white transition">体験・入会</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- CLASSES -->
+  <section id="classes" class="py-24 bg-brand-black pt-32">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row md:items-end gap-4 mb-12 border-b border-white/10 pb-4">
+        <div>
+          <span class="text-brand-pink font-display font-bold text-sm tracking-widest block mb-1">CLASSES & ACCESS</span>
+          <h2 class="text-4xl md:text-5xl font-black">クラス・開催場所</h2>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <!-- HADANO -->
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-brand-pink text-black font-display font-bold text-2xl px-4 py-1 -skew-x-12 shadow-[4px_4px_0_rgba(255,255,255,0.2)]">HADANO</div>
+            <h3 class="text-2xl font-bold">秦野エリア</h3>
+          </div>
+          <p class="text-sm text-gray-400 mb-3"><i class="fas fa-map-marker-alt"></i> 秦野カルチャーパーク陸上競技場</p>
+
+          <div class="bg-brand-gray rounded-sm overflow-hidden border border-white/10">
+            <div class="divide-y divide-white/5">
+
+              <!-- Class Item -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-lg font-bold text-white">総合クラス</h4>
+                  <span class="text-xs text-brand-pink border border-brand-pink px-2 py-0.5 rounded">小学4年生以下</span>
+                </div>
+                <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink">
+                   <div class="flex justify-between text-sm">
+                     <span class="font-bold text-gray-300">土曜日</span>
+                     <span class="font-display font-bold text-white text-lg">16:30 – 17:45</span>
+                   </div>
+                </div>
+              </div>
+
+              <!-- Class Item -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-lg font-bold text-white">専門クラス</h4>
+                  <span class="text-xs text-brand-pink border border-brand-pink px-2 py-0.5 rounded">小学生のみ</span>
+                </div>
+                <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink">
+                   <div class="flex justify-between text-sm">
+                     <span class="font-bold text-gray-300">火・水・木・土</span>
+                     <span class="font-display font-bold text-white text-lg">17:00 – 18:30</span>
+                   </div>
+                </div>
+              </div>
+
+              <!-- Class Item -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-lg font-bold text-white">野球特化陸上クラス</h4>
+                  <span class="text-xs text-blue-300 border border-blue-300 px-2 py-0.5 rounded">小学生のみ</span>
+                </div>
+                <div class="bg-black/40 p-3 rounded border-l-2 border-blue-300">
+                   <div class="flex justify-between text-sm">
+                     <span class="font-bold text-gray-300">火曜日</span>
+                     <span class="font-display font-bold text-white text-lg">17:00 – 18:00</span>
+                   </div>
+                </div>
+              </div>
+
+              <!-- Class Item (Detailed) -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-lg font-bold text-white">小学生アスリートクラス</h4>
+                  <span class="text-xs text-brand-pink border border-brand-pink px-2 py-0.5 rounded">競技志向</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink flex justify-between items-center">
+                     <span class="font-bold text-gray-300 text-sm">火・水・土</span>
+                     <span class="font-display font-bold text-white text-lg">17:00 – 19:15</span>
+                  </div>
+                  <div class="bg-black/40 p-3 rounded border-l-2 border-gray-500 flex justify-between items-center">
+                     <span class="font-bold text-gray-300 text-sm">木曜日</span>
+                     <span class="font-display font-bold text-white text-lg">17:00 – 20:00</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Class Item (Detailed) -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex justify-between items-start mb-2">
+                  <h4 class="text-lg font-bold text-white">中高生クラス</h4>
+                  <span class="text-xs text-brand-pink border border-brand-pink px-2 py-0.5 rounded">部活併用可</span>
+                </div>
+                <div class="space-y-2">
+                  <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink flex justify-between items-center">
+                     <span class="font-bold text-gray-300 text-sm">火・水・土</span>
+                     <span class="font-display font-bold text-white text-lg">17:30 – 19:45</span>
+                  </div>
+                  <div class="bg-black/40 p-3 rounded border-l-2 border-gray-500 flex justify-between items-center">
+                     <span class="font-bold text-gray-300 text-sm">木曜日</span>
+                     <span class="font-display font-bold text-white text-lg">17:00 – 20:00</span>
+                  </div>
+                </div>
+                <p class="mt-3 text-xs text-gray-400 leading-relaxed">
+                  ※大学生・実業団の方はお問い合わせください。
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- YAMATO -->
+        <div>
+          <div class="flex items-center gap-4 mb-6">
+            <div class="bg-white text-black font-display font-bold text-2xl px-4 py-1 -skew-x-12 shadow-[4px_4px_0_rgba(255,42,161,1)]">YAMATO</div>
+            <h3 class="text-2xl font-bold">大和スポーツセンター陸上競技場</h3>
+          </div>
+
+          <div class="bg-brand-gray rounded-sm overflow-hidden border border-white/10">
+            <div class="bg-black/30 px-6 py-3 border-b border-white/10">
+              <p class="text-sm text-gray-300 font-bold">土曜・日曜開催</p>
+              <p class="text-xs text-gray-400 mt-2 leading-relaxed">
+                ※土曜 17:00–18:00 は「小学生クラス」と「小学生アスリート・中学生クラス」が合同練習を行います
+              </p>
+            </div>
+
+            <div class="divide-y divide-white/10">
+
+              <!-- SAT: Elementary -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                  <div>
+                    <span class="text-xs text-white font-bold border border-white px-2 py-0.5 rounded-full">土曜</span>
+                    <h4 class="text-lg font-bold mt-1 text-white">小学生クラス</h4>
+                    <p class="text-xs text-gray-400 mt-1">※17:00–18:00 は合同練習</p>
+                    <p class="text-xs text-brand-pink font-bold mt-1">※振替は日曜の大和クラスにて実施</p>
+                  </div>
+                  <div class="text-right md:text-left">
+                    <div class="font-display text-xl font-bold text-white">17:00–18:00</div>
+                    <div class="text-sm text-brand-pink font-bold mt-1">月 5,500円</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SAT: Athlete + JHS -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                  <div>
+                    <span class="text-xs text-white font-bold border border-white px-2 py-0.5 rounded-full">土曜</span>
+                    <h4 class="text-lg font-bold mt-1 text-white">小学生アスリート・中学生クラス</h4>
+                    <p class="text-xs text-gray-400 mt-1">※17:00–18:00 は合同練習</p>
+                    <p class="text-xs text-brand-pink font-bold mt-1">※振替は日曜の大和クラスにて実施</p>
+                  </div>
+                  <div class="text-right md:text-left">
+                    <div class="font-display text-xl font-bold text-white">17:00–19:00</div>
+                    <div class="text-sm text-brand-pink font-bold mt-1">月 7,700円</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SUN: Specialized -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                  <div>
+                    <span class="text-xs text-white font-bold border border-white px-2 py-0.5 rounded-full">日曜</span>
+                    <h4 class="text-lg font-bold mt-1 text-white">小学生クラス</h4>
+                  </div>
+                  <div class="text-right md:text-left">
+                    <div class="font-display text-xl font-bold text-white">17:30–19:00</div>
+                    <div class="text-sm text-brand-pink font-bold mt-1">1回 1,650円</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- SUN: Athlete -->
+              <div class="p-5 hover:bg-white/5 transition">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                  <div>
+                    <span class="text-xs text-white font-bold border border-white px-2 py-0.5 rounded-full">日曜</span>
+                    <h4 class="text-lg font-bold mt-1 text-white">小中学生アスリートクラス</h4>
+                  </div>
+                  <div class="text-right md:text-left">
+                    <div class="font-display text-xl font-bold text-white">17:30–19:30</div>
+                    <div class="text-sm text-brand-pink font-bold mt-1">1回 2,200円</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="mt-8 bg-brand-pink/10 p-6 border border-brand-pink/30 rounded-sm">
+            <div class="text-brand-pink font-bold tracking-widest text-xs mb-2">PAYMENT</div>
+            <p class="text-sm text-gray-200 font-bold">
+              Square（オンライン決済 / タッチ決済）対応
+            </p>
+            <p class="text-xs text-gray-400 mt-1">※その他のお支払い方法は応相談</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FEES -->
+  <section id="fees" class="py-24 bg-brand-dark clip-diagonal-rev relative">
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="text-center mb-12">
+        <span class="text-brand-pink font-display font-bold text-sm tracking-widest block mb-1">PRICE LIST</span>
+        <h2 class="text-4xl md:text-5xl font-black">会費</h2>
+        <p class="text-gray-400 mt-4 text-sm">※表示は税込価格です</p>
+      </div>
+
+      <!-- Annual Fee Highlight -->
+      <div class="max-w-5xl mx-auto mb-10">
+        <div class="bg-brand-pink text-black p-6 rounded-sm text-center md:text-left md:flex items-center justify-between shadow-lg transform hover:scale-[1.01] transition-transform">
+          <div>
+            <h3 class="text-xl font-black font-display italic tracking-wide mb-1">ANNUAL FEE</h3>
+            <p class="font-bold text-sm md:text-base opacity-90">入会金・年会費（スポーツ安全保険料含む）</p>
+          </div>
+          <div class="mt-3 md:mt-0">
+            <span class="font-display text-4xl font-black">7,700</span><span class="text-lg font-bold ml-1">円/年</span>
+            <p class="text-xs font-bold opacity-80 mt-1 text-right">※年度途中入会は月割計算あり</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
+        <!-- Spot -->
+        <div class="bg-black/40 border border-white/10 p-6 md:p-8">
+          <h3 class="text-brand-pink font-bold text-xl mb-6 flex items-center gap-2">
+            <span class="block w-2 h-6 bg-brand-pink skew-x-[-12deg]"></span>
+            単発（都度参加）
+          </h3>
+          <ul class="space-y-5">
+            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed">
+              <div>
+                <span class="text-sm font-bold block">野球特化陸上</span>
+                <span class="text-xs text-gray-500">秦野エリア</span>
+              </div>
+              <span class="font-display text-2xl font-bold">1,100<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/回</span></span>
+            </li>
+            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed">
+              <div>
+                <span class="text-sm font-bold block">小学生クラス</span>
+                <span class="text-xs text-gray-500">大和・日曜</span>
+              </div>
+              <span class="font-display text-2xl font-bold">1,650<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/回</span></span>
+            </li>
+            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed">
+              <div>
+                <span class="text-sm font-bold block">小中学生アスリート</span>
+                <span class="text-xs text-gray-500">大和・日曜</span>
+              </div>
+              <span class="font-display text-2xl font-bold">2,200<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/回</span></span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Monthly -->
+        <div class="bg-black/40 border border-white/10 p-6 md:p-8">
+          <h3 class="text-brand-pink font-bold text-xl mb-6 flex items-center gap-2">
+            <span class="block w-2 h-6 bg-brand-pink skew-x-[-12deg]"></span>
+            月額会員（秦野）
+          </h3>
+          <ul class="space-y-5">
+            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed">
+              <div>
+                <span class="text-sm font-bold block">総合＋専門クラス</span>
+                <span class="text-xs text-brand-pink">★参加し放題</span>
+              </div>
+              <span class="font-display text-2xl font-bold">6,600<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/月</span></span>
+            </li>
+            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed bg-brand-pink/10 border border-brand-pink/40 rounded-lg px-3 py-2">
+              <div>
+                <span class="text-sm font-bold block">中高生 部活動コース</span>
+                <span class="text-xs text-gray-500">※加入条件あり</span>
+              </div>
+              <span class="font-display text-2xl font-bold">8,800<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/月</span></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Athlete Members -->
+      <div class="max-w-5xl mx-auto mt-8">
+        <div class="bg-gradient-to-r from-brand-pink/20 to-transparent p-1">
+          <div class="bg-black/80 p-6 md:p-8">
+            <h3 class="text-white font-bold mb-6 text-lg text-center md:text-left">小学生アスリート／中高生クラス（会員）</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div class="bg-brand-gray p-4 border border-white/10">
+                <div class="text-sm text-gray-400 mb-1">週1会員</div>
+                <div class="font-display text-3xl font-bold">7,700<span class="text-sm ml-1 text-white/50">円</span></div>
+              </div>
+              <div class="bg-brand-gray p-4 border border-brand-pink/50 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-brand-pink text-black text-[10px] px-2 py-0.5 font-bold">POPULAR</div>
+                <div class="text-sm text-brand-pink mb-1 font-bold">週2会員</div>
+                <div class="font-display text-3xl font-bold text-brand-pink">9,900<span class="text-sm ml-1 text-white/50">円</span></div>
+              </div>
+              <div class="bg-brand-pink text-black p-4">
+                <div class="text-sm text-black/70 font-bold mb-1">フリー会員</div>
+                <div class="font-display text-3xl font-bold">11,000<span class="text-sm ml-1 text-black/50">円</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-center text-sm text-gray-400 mt-6">
+          チームウェア購入・試合参加は任意／保護者当番なし
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-black text-gray-600 py-12 border-t border-white/5">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <div>
+        <a href="index.html" class="text-3xl font-black font-display italic tracking-tighter text-white block mb-1">
+          HAPPINESS<span class="text-brand-pink">AC</span>
+        </a>
+        <p class="text-xs text-gray-400">神奈川県（秦野・大和）ジュニア陸上クラブ</p>
+      </div>
+
+      <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-bold">
+        <a href="index.html#about" class="hover:text-white transition-colors">指導軸</a>
+        <a href="classes.html" class="hover:text-white transition-colors">クラス</a>
+        <a href="classes.html#fees" class="hover:text-white transition-colors">会費</a>
+        <a href="coaches.html" class="hover:text-white transition-colors">指導者</a>
+        <a href="https://form.run/@happiness-ac--1611570580" target="_blank" class="text-brand-pink hover:text-white transition-colors">お問い合わせ</a>
+      </div>
+
+      <div class="text-xs text-gray-500 border-t border-gray-800 w-full md:w-auto md:border-none pt-4 md:pt-0">
+        &copy; HappinessAC All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile Sticky CTA -->
+  <div class="sticky-cta md:hidden px-4 py-3 pb-6 safe-area-bottom">
+    <div class="grid grid-cols-2 gap-3">
+      <a href="https://lin.ee/0xMJ03O" target="_blank"
+         class="bg-[#06c755] text-white font-bold py-3.5 text-center rounded-sm shadow-lg flex items-center justify-center gap-2">
+         LINE相談
+      </a>
+      <a href="https://form.run/@happiness-ac--1611570580" target="_blank"
+         class="bg-brand-pink text-white font-bold py-3.5 text-center rounded-sm shadow-lg flex items-center justify-center gap-2">
+         体験申込 <span class="text-sm">→</span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

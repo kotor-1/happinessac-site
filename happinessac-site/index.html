@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>HappinessAC | 神奈川・秦野/大和のジュニア陸上クラブ</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              pink: '#ff2aa1',
+              black: '#0b0b0f',
+              dark:  '#121216',
+              gray:  '#1f1f2e'
+            }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            display: ['"Oswald"', 'sans-serif'],
+          },
+          backgroundImage: {
+            noise: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background:#0b0b0f; color:#fff; overflow-x:hidden; }
+    .speed-lines{
+      position:absolute; inset:0;
+      background:repeating-linear-gradient(90deg,transparent 0,transparent 90px,rgba(255,42,161,.03) 90px,rgba(255,42,161,.03) 91px);
+      pointer-events:none; z-index:0;
+      animation:speedMove 14s linear infinite;
+    }
+    @keyframes speedMove { from{transform:translateX(0)} to{transform:translateX(-180px)} }
+
+    .clip-diagonal{ clip-path:polygon(0 0,100% 0,100% 90%,0 100%); }
+    .clip-diagonal-rev{ clip-path:polygon(0 10%,100% 0,100% 100%,0 100%); }
+
+    .text-stroke{ -webkit-text-stroke:1px rgba(255,255,255,.15); color:transparent; }
+    .track-lane-bg{
+      background-image:repeating-linear-gradient(180deg,transparent,transparent 49px,rgba(255,255,255,.06) 50px);
+    }
+
+    .btn-glitch{ position:relative; overflow:hidden; transition:.25s; }
+    .btn-glitch::before{
+      content:''; position:absolute; inset:0; left:-120%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
+      transition:.5s;
+    }
+    .btn-glitch:hover::before{ left:120%; }
+
+    /* custom scrollbar */
+    ::-webkit-scrollbar{ width:8px; }
+    ::-webkit-scrollbar-track{ background:#0b0b0f; }
+    ::-webkit-scrollbar-thumb{ background:#ff2aa1; border-radius:4px; }
+
+    /* Mobile sticky CTA */
+    .sticky-cta{
+      position:fixed; left:0; bottom:0; width:100%;
+      z-index:60;
+      box-shadow:0 -6px 18px rgba(0,0,0,.35);
+      background:rgba(11,11,15,.95);
+      backdrop-filter: blur(10px);
+      border-top:1px solid rgba(255,42,161,.2);
+    }
+
+    /* Coach image: Safariでもタップでカラー化 */
+    .coach-card img{
+      filter: grayscale(1);
+      transition: filter .25s ease, transform .25s ease;
+    }
+    .coach-card:hover img{ filter: grayscale(0); } /* PC用 */
+    .coach-card.is-active img{ filter: grayscale(0); } /* スマホSafari用 */
+
+    /* PCでも新着情報を下に落とさない（order指定の上書き） */
+    main { display: flex; flex-direction: column; }
+    @media (min-width: 768px) {
+      /* PCでも新着情報を上部に */
+      #news { order: 1; }
+      #about { order: 2; }
+      #join { order: 3; }
+      #classes-link { order: 4; }
+    }
+
+    /* mobile header cleanup */
+    @media (max-width: 640px) {
+      /* 1枚目：上部がごちゃごちゃ → ロゴ文字を消してメニューだけ */
+      .nav-brand { display: none !important; }
+
+      /* 「新着」はスマホ上部メニューから消す（セクションは表示） */
+      .nav-news { display: none !important; }
+    }
+
+    /* ===== Mobile hero spacing tighten ===== */
+    @media (max-width: 640px) {
+      /* ヒーロー全体の上下余白（上の丸：ヘッダー〜ヒーロー開始） */
+      .hero,
+      .hero-section,
+      #hero {
+        padding-top: 52px !important;
+        padding-bottom: 18px !important;
+        min-height: auto !important;
+      }
+
+      /* キャッチコピー下（下の丸：コピー〜NEWSまでの空白） */
+      .hero-copy,
+      .hero-lead,
+      .hero-text {
+        margin-bottom: 12px !important;
+        line-height: 1.55 !important;
+        font-size: 1.18rem !important;
+        letter-spacing: .02em !important;
+        margin-top: 10px !important;
+      }
+
+      /* NEWSブロックが下に押され過ぎる時の調整 */
+      .news,
+      #news {
+        margin-top: 16px !important;
+      }
+    }
+
+    html, body { overflow-x: hidden; }
+  </style>
+</head>
+
+<body class="font-sans antialiased selection:bg-brand-pink selection:text-white pb-24 md:pb-0">
+
+  <!-- Global noise -->
+  <div class="fixed inset-0 bg-noise pointer-events-none z-50 mix-blend-overlay"></div>
+
+  <!-- Top nav (スマホ・PC共通) -->
+  <div class="sticky top-0 z-40 bg-brand-black/80 backdrop-blur border-b border-white/5">
+    <div class="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="nav-brand hidden md:block font-display font-black italic tracking-tight text-xl">
+        HAPPINESS<span class="text-brand-pink">AC</span>
+      </a>
+      <nav class="text-xs md:text-sm font-bold text-gray-300 flex gap-3 md:gap-6 overflow-x-auto whitespace-nowrap">
+        <a href="index.html#about" class="hover:text-white transition">指導軸</a>
+        <a href="classes.html" class="hover:text-white transition">クラス</a>
+        <a href="classes.html#fees" class="hover:text-white transition">会費</a>
+        <a href="online-personal.html" class="hover:text-white transition">オンライン</a>
+        <a href="coaches.html" class="hover:text-white transition">指導者</a>
+        <a href="results.html" class="hover:text-white transition">実績</a>
+        <a href="#news" class="nav-news hover:text-white transition">新着</a>
+        <a href="index.html#join" class="text-brand-pink hover:text-white transition">体験・入会</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header id="top" class="hero relative min-h-[78vh] md:min-h-[92vh] flex flex-col justify-center items-center overflow-hidden pt-14 md:pt-24 pb-10 md:pb-14">
+    <div class="speed-lines"></div>
+    <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-brand-pink/10 to-transparent skew-x-[-12deg] origin-top-right pointer-events-none"></div>
+
+    <!-- big typo -->
+    <div class="absolute top-1/4 left-0 w-full text-center pointer-events-none select-none opacity-20">
+      <span class="text-[15vw] leading-none font-display font-bold text-stroke block transform -skew-x-12 translate-x-[-10%]">SPRINT</span>
+      <span class="text-[15vw] leading-none font-display font-bold text-stroke block transform -skew-x-12 translate-x-[10%]">FORM</span>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center md:text-left">
+      <div class="inline-block bg-brand-pink text-black font-bold font-display px-2 py-1 mb-4 text-sm tracking-widest skew-x-[-12deg]">
+        <span class="block skew-x-[12deg]">KANAGAWA / HADANO / YAMATO</span>
+      </div>
+
+      <h1 class="text-5xl md:text-8xl font-black font-display tracking-tighter leading-[0.9] mb-3">
+        HAPPINESS<span class="text-brand-pink">AC</span>
+      </h1>
+
+      <p class="text-lg md:text-2xl font-medium text-gray-300 mb-6 tracking-wide">
+        神奈川県（秦野・大和）ジュニア陸上クラブ
+      </p>
+
+      <!-- Unique one-liner (Revised) -->
+      <div class="max-w-3xl border-l-4 border-brand-pink pl-4 md:pl-6 text-left mx-auto md:mx-0">
+        <p class="hero-copy text-lg md:text-xl font-bold text-white mb-2 leading-snug">
+          「身体の使い方」で、走りは変わる。<br>
+          小学生から実業団までの一貫指導で、<br>
+          未来へ加速する。
+        </p>
+        <p class="text-sm md:text-base text-gray-400">
+          毎年全国大会へ選手を輩出｜保護者負担（当番・補助）なし
+        </p>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+  <!-- NEWS (HEROのすぐ下に配置) -->
+  <section id="news" class="mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
+    <div class="flex items-end justify-between gap-4 mb-6">
+      <div>
+        <div class="text-brand-pink font-bold tracking-widest text-xs">NEWS</div>
+        <h2 class="text-2xl md:text-3xl font-bold">新着情報</h2>
+      </div>
+    </div>
+
+    <div class="grid gap-3">
+      <!-- 最新 -->
+      <div class="block rounded-xl border border-white/10 bg-white/5 p-4">
+        <div class="text-xs text-white/60">2026/01/01</div>
+        <div class="mt-1 font-semibold">
+          1月の体験会ページを更新しました。
+          <a href="https://happinessac.fly.dev/"
+             target="_blank"
+             rel="noopener"
+             class="ml-2 underline text-pink-400 hover:text-pink-300">
+            申し込みページはこちら
+          </a>
+        </div>
+      </div>
+
+      <!-- 次 -->
+      <div class="block rounded-xl border border-white/10 bg-white/5 p-4">
+        <div class="text-xs text-white/60">2026/01/01</div>
+        <div class="mt-1 font-semibold">
+          ホームページをリニューアルしました。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- クラス・会費 -->
+  <section id="classes-link">
+    <div class="mx-auto max-w-6xl px-4 py-8 text-center">
+      <a href="classes.html"
+         class="inline-block w-full md:w-auto rounded-xl border border-pink-400 px-8 py-4 text-lg font-semibold text-pink-400 hover:bg-pink-500 hover:text-white transition">
+        クラス・会費を見る
+      </a>
+    </div>
+  </section>
+
+  <!-- ABOUT / PHILOSOPHY -->
+  <section id="about" class="py-24 bg-brand-dark clip-diagonal relative overflow-hidden">
+    <div class="absolute inset-0 track-lane-bg opacity-20 pointer-events-none"></div>
+
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="mb-16 flex flex-col md:flex-row md:items-end gap-4 border-b border-white/10 pb-6">
+        <div>
+          <span class="text-brand-pink font-display font-bold text-sm tracking-widest block mb-1">PHILOSOPHY</span>
+          <h2 class="text-4xl md:text-5xl font-black leading-tight">HappinessACの<span class="inline-block">指導軸</span></h2>
+        </div>
+        <p class="text-gray-400 text-sm md:text-base md:ml-auto max-w-lg md:pb-2 text-right md:text-left">
+          "速い子だけのクラブ"ではありません。<br>フォームと身体操作を整え、誰もが成長できる環境を。
+        </p>
+      </div>
+
+      <!-- Track-lane Layout (Staggered Lanes) -->
+      <div class="flex flex-col gap-4 max-w-5xl mx-auto">
+        
+        <!-- Lane 01 -->
+        <div class="relative bg-gradient-to-r from-brand-gray to-brand-black p-6 md:p-8 rounded-sm border-l-8 border-brand-pink transform md:-translate-x-12 hover:translate-x-0 transition-transform duration-500 group">
+          <div class="absolute right-4 top-0 text-6xl font-display font-bold text-white/5 group-hover:text-brand-pink/10 transition">01</div>
+          <div class="flex flex-col md:flex-row md:items-center gap-4">
+            <h3 class="text-2xl font-bold text-white min-w-[200px]">一貫指導</h3>
+            <div class="h-[1px] w-12 bg-brand-pink/50 hidden md:block"></div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              小学生から高校生まで途切れない育成システム。目先の勝利だけでなく、将来トップアスリートとして活躍するための「土台」と「技術」を段階的に築きます。
+            </p>
+          </div>
+        </div>
+
+        <!-- Lane 02 -->
+        <div class="relative bg-gradient-to-r from-brand-gray to-brand-black p-6 md:p-8 rounded-sm border-l-8 border-white/80 transform md:-translate-x-6 hover:translate-x-0 transition-transform duration-500 group">
+          <div class="absolute right-4 top-0 text-6xl font-display font-bold text-white/5 group-hover:text-white/10 transition">02</div>
+          <div class="flex flex-col md:flex-row md:items-center gap-4">
+            <h3 class="text-2xl font-bold text-white min-w-[200px]">正しい身体操作</h3>
+            <div class="h-[1px] w-12 bg-white/30 hidden md:block"></div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              筋力任せの走りは教えません。関節・姿勢・動作の質を重視した「効率的な身体操作」を習得し、ケガを予防しながら記録を伸ばします。
+            </p>
+          </div>
+        </div>
+
+        <!-- Lane 03 -->
+        <div class="relative bg-gradient-to-r from-brand-gray to-brand-black p-6 md:p-8 rounded-sm border-l-8 border-brand-pink transform md:translate-x-0 hover:translate-x-2 transition-transform duration-500 group">
+          <div class="absolute right-4 top-0 text-6xl font-display font-bold text-white/5 group-hover:text-brand-pink/10 transition">03</div>
+          <div class="flex flex-col md:flex-row md:items-center gap-4">
+            <h3 class="text-2xl font-bold text-white min-w-[200px]">全国大会実績</h3>
+            <div class="h-[1px] w-12 bg-brand-pink/50 hidden md:block"></div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              毎年、全国大会レベルの選手を輩出。初心者から日本一を目指す選手まで、実績に裏付けられた指導理論でサポートします。
+            </p>
+          </div>
+        </div>
+
+        <!-- Lane 04 -->
+        <div class="relative bg-gradient-to-r from-brand-gray to-brand-black p-6 md:p-8 rounded-sm border-l-8 border-white/80 transform md:translate-x-6 hover:translate-x-8 transition-transform duration-500 group">
+          <div class="absolute right-4 top-0 text-6xl font-display font-bold text-white/5 group-hover:text-white/10 transition">04</div>
+          <div class="flex flex-col md:flex-row md:items-center gap-4">
+            <h3 class="text-2xl font-bold text-white min-w-[200px]">保護者負担ゼロ</h3>
+            <div class="h-[1px] w-12 bg-white/30 hidden md:block"></div>
+            <p class="text-gray-300 text-sm leading-relaxed">
+              お茶当番・練習補助・配車当番は一切ありません。ウェア購入や試合参加も任意。ご家庭のライフスタイルに合わせて無理なく継続できます。
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- JOIN -->
+  <section id="join" class="py-28 bg-brand-pink relative overflow-hidden text-brand-black">
+    <div class="speed-lines opacity-10 mix-blend-multiply"></div>
+
+    <div class="container mx-auto px-4 relative z-10 text-center">
+      <div class="text-black/70 font-bold tracking-widest text-sm mb-2">JOIN US</div>
+      <h2 class="text-4xl md:text-6xl font-black font-display italic tracking-tighter mb-6">体験・入会</h2>
+      <p class="text-xl md:text-2xl font-bold mb-10 max-w-2xl mx-auto leading-relaxed">
+        まずは体験へ。<br>"走り"を変えるきっかけを、ここで。
+      </p>
+
+      <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12 font-bold opacity-80">
+        <div class="flex items-center gap-3">
+          <span class="bg-black text-brand-pink w-10 h-10 rounded-full flex items-center justify-center font-display text-xl">1</span>
+          <span class="text-lg">WEB/LINEで申込</span>
+        </div>
+        <div class="hidden md:block w-12 h-[2px] bg-black/30"></div>
+        <div class="text-2xl md:hidden">↓</div>
+        <div class="flex items-center gap-3">
+          <span class="bg-black text-brand-pink w-10 h-10 rounded-full flex items-center justify-center font-display text-xl">2</span>
+          <span class="text-lg">詳細案内を受信</span>
+        </div>
+        <div class="hidden md:block w-12 h-[2px] bg-black/30"></div>
+        <div class="text-2xl md:hidden">↓</div>
+        <div class="flex items-center gap-3">
+          <span class="bg-black text-brand-pink w-10 h-10 rounded-full flex items-center justify-center font-display text-xl">3</span>
+          <span class="text-lg">体験スタート</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-6 justify-center max-w-3xl mx-auto">
+        <a href="https://form.run/@happiness-ac--1611570580" target="_blank"
+           class="w-full md:w-auto flex-1 bg-black text-white px-8 py-6 font-bold text-xl rounded-sm hover:scale-[1.02] transition-transform shadow-2xl relative group">
+          <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          <span class="relative z-10">体験・問い合わせフォーム</span>
+          <span class="block text-xs font-normal text-gray-400 mt-1 relative z-10">※無理な勧誘は一切いたしません</span>
+        </a>
+        <a href="https://lin.ee/0xMJ03O" target="_blank"
+           class="w-full md:w-auto flex-1 bg-[#06c755] text-white px-8 py-6 font-bold text-xl rounded-sm hover:scale-[1.02] transition-transform shadow-2xl relative group">
+          <div class="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+          <span class="relative z-10">LINEで相談</span>
+          <span class="block text-xs font-normal text-white/80 mt-1 relative z-10">気軽に質問OK</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-brand-black text-gray-600 py-12 border-t border-white/5">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+      <div>
+        <a href="#top" class="text-3xl font-black font-display italic tracking-tighter text-white block mb-1">
+          HAPPINESS<span class="text-brand-pink">AC</span>
+        </a>
+        <p class="text-xs text-gray-400">神奈川県（秦野・大和）ジュニア陸上クラブ</p>
+      </div>
+
+      <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-bold">
+        <a href="#about" class="hover:text-white transition-colors">指導軸</a>
+        <a href="classes.html" class="hover:text-white transition-colors">クラス</a>
+        <a href="classes.html#fees" class="hover:text-white transition-colors">会費</a>
+        <a href="coaches.html" class="hover:text-white transition-colors">指導者</a>
+        <a href="https://form.run/@happiness-ac--1611570580" target="_blank" class="text-brand-pink hover:text-white transition-colors">お問い合わせ</a>
+      </div>
+
+      <div class="text-xs text-gray-500 border-t border-gray-800 w-full md:w-auto md:border-none pt-4 md:pt-0">
+        &copy; HappinessAC All Rights Reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const cards = Array.from(document.querySelectorAll('.coach-card'));
+      if (!cards.length) return;
+
+      const activate = (card) => {
+        cards.forEach(c => c.classList.remove('is-active'));
+        card.classList.add('is-active');
+      };
+
+      cards.forEach(card => {
+        // iOS Safari 対策：touchstart を優先
+        card.addEventListener('touchstart', () => activate(card), { passive: true });
+        card.addEventListener('click', () => activate(card));
+      });
+    })();
+  </script>
+
+</body>
+</html>

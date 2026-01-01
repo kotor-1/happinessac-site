@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>実績 | HappinessAC</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { pink:'#ff2aa1', black:'#0b0b0f', dark:'#121216', gray:'#1f1f2e' }
+          },
+          fontFamily: {
+            sans: ['"Noto Sans JP"', 'sans-serif'],
+            display: ['"Oswald"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { background:#0b0b0f; color:#fff; overflow-x:hidden; }
+    .speed-lines{
+      position:absolute; inset:0;
+      background:repeating-linear-gradient(90deg,transparent 0,transparent 90px,rgba(255,42,161,.03) 90px,rgba(255,42,161,.03) 91px);
+      pointer-events:none; z-index:0;
+      animation:speedMove 14s linear infinite;
+    }
+    @keyframes speedMove { from{transform:translateX(0)} to{transform:translateX(-180px)} }
+    .card { background: rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.10); }
+    details[open] summary .chev { transform: rotate(180deg); }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+
+  <!-- Top bar -->
+  <div class="sticky top-0 z-40 bg-brand-black/80 backdrop-blur border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <a href="index.html" class="font-display font-black italic tracking-tight text-xl">
+        HAPPINESS<span class="text-brand-pink">AC</span>
+      </a>
+
+      <div class="flex items-center gap-3">
+        <a href="index.html#news" class="text-xs md:text-sm font-bold text-gray-300 hover:text-white transition">新着</a>
+        <a href="index.html#classes" class="text-xs md:text-sm font-bold text-gray-300 hover:text-white transition">クラス</a>
+        <a href="index.html#fees" class="text-xs md:text-sm font-bold text-gray-300 hover:text-white transition">会費</a>
+        <a href="index.html#join" class="text-xs md:text-sm font-bold text-brand-pink hover:text-white transition">体験・入会</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="relative overflow-hidden">
+    <div class="speed-lines"></div>
+    <div class="absolute top-0 right-0 w-2/3 h-full bg-gradient-to-l from-brand-pink/10 to-transparent skew-x-[-12deg] origin-top-right pointer-events-none"></div>
+
+    <div class="max-w-6xl mx-auto px-4 pt-12 pb-10 relative z-10">
+      <div class="inline-block bg-brand-pink text-black font-bold font-display px-2 py-1 mb-3 text-xs tracking-widest skew-x-[-12deg]">
+        <span class="block skew-x-[12deg]">RESULTS</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-black font-display tracking-tight leading-[0.95]">
+        実績
+      </h1>
+      <p class="text-sm md:text-base text-gray-300 mt-3 max-w-3xl leading-relaxed">
+        全国大会出場・入賞を含む主な実績を、年度別にまとめています。<br class="hidden md:block">
+        スマホでも見やすいよう、大会ごとに折りたたみ表示にしています。
+      </p>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <a href="#y2025" class="card px-5 py-3 font-bold rounded-xl hover:bg-white/10 transition text-center">
+          2025年へ ↓
+        </a>
+        <a href="#y2024" class="card px-5 py-3 font-bold rounded-xl hover:bg-white/10 transition text-center">
+          2024年へ ↓
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Featured athletes (only 2 photos) -->
+  <section class="max-w-6xl mx-auto px-4 pb-10">
+    <div class="card rounded-2xl p-5 md:p-6">
+      <div class="flex items-end justify-between gap-4">
+        <div>
+          <div class="text-brand-pink font-bold tracking-widest text-xs">FEATURED</div>
+          <h2 class="text-2xl md:text-3xl font-black mt-1">写真掲載選手</h2>
+          <p class="text-xs md:text-sm text-gray-400 mt-2">※主要実績者のみ掲載（2025/2024）</p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-4">
+        <!-- Sato -->
+        <div class="card rounded-2xl overflow-hidden">
+          <div class="h-64 md:h-80 bg-black">
+            <img src="/images/sato-kazushi.jpg?v=20260103" alt="佐藤一志" width="800" height="600" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4 md:p-5">
+            <div class="text-xs text-gray-400">2025</div>
+            <div class="text-xl font-bold mt-1">佐藤 一志</div>
+            <div class="mt-2 inline-flex items-center gap-2 text-sm font-bold">
+              <span class="px-2 py-1 rounded-lg bg-brand-pink text-black">小学生 日本一</span>
+              <span class="text-gray-300">男子コンバインドA 全国優勝</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shimanaka -->
+        <div class="card rounded-2xl overflow-hidden">
+          <div class="h-64 md:h-80 bg-black">
+            <img src="/images/shimanaka-miyu.jpg?v=20260103" alt="嶋中心優" width="800" height="600" class="w-full h-full object-cover">
+          </div>
+          <div class="p-4 md:p-5">
+            <div class="text-xs text-gray-400">2024</div>
+            <div class="text-xl font-bold mt-1">嶋中 心優</div>
+            <div class="mt-2 inline-flex items-center gap-2 text-sm font-bold">
+              <span class="px-2 py-1 rounded-lg bg-white text-black">全中 5位</span>
+              <span class="text-gray-300">女子100mH</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 2025 -->
+  <section id="y2025" class="max-w-6xl mx-auto px-4 pb-12">
+    <div class="flex items-end justify-between gap-4 mb-4">
+      <div>
+        <div class="text-brand-pink font-bold tracking-widest text-xs">YEAR</div>
+        <h2 class="text-3xl md:text-4xl font-black">2025年</h2>
+      </div>
+    </div>
+
+    <div class="space-y-3">
+      <!-- Jitsugyodan -->
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第73回 全日本実業団対抗 陸上競技選手権</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
+          <li>女子100mH 出場</li>
+        </ul>
+      </details>
+
+      <!-- Nissin national -->
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">日清食品カップ 第41回 全国小学生陸上競技交流大会</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
+          <li>男子コンバインドA 全国優勝</li>
+          <li>女子コンバインドA 全国14位</li>
+          <li>5年女子100m 全国27位</li>
+        </ul>
+      </details>
+
+      <!-- Challenge Cup Tokyo -->
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第32回 ジュニア陸上競技・チャレンジカップ東京</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-1">
+          <li>6年男子100m 8位入賞</li>
+          <li>6年男子80mH 優勝</li>
+          <li>5年男子80mH 5位入賞</li>
+          <li>4年男子60mH 準優勝</li>
+          <li>5・6年男子4×100mR 5位入賞</li>
+          <li>6年女子100m 5位入賞</li>
+          <li>6年女子80mH 優勝・7位入賞</li>
+          <li>4年女子60mH 7位入賞</li>
+          <li>6年女子走り幅跳び 準優勝</li>
+          <li>5年女子100m 4位入賞</li>
+          <li>4年女子100m 7位入賞</li>
+          <li>5・6年女子4×100mR 3位</li>
+          <li>3・4年女子4×100mR 8位入賞</li>
+          <li>男女混合4×100mR 準優勝</li>
+        </ul>
+      </details>
+
+      <!-- Kanagawa Qualifier -->
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">日清カップ全国予選 神奈川県予選会</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
+          <li>男子コンバインドA 優勝</li>
+          <li>女子コンバインドA 優勝</li>
+          <li>5年女子100m 優勝</li>
+          <li>5年男子100m 準優勝</li>
+          <li>女子コンバインドB 準優勝</li>
+          <li>男女混合4×100mR 準優勝</li>
+        </ul>
+      </details>
+
+      <!-- Kanagawa Autumn -->
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">神奈川県小学生陸上競技 秋季交流大会</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-1">
+          <li>共通男子80mH 優勝・3位入賞</li>
+          <li>6年男子100m 優勝・7位入賞</li>
+          <li>5年男子100m 3位入賞</li>
+          <li>4年男子100m 準優勝</li>
+          <li>共通男子4×100mR 優勝</li>
+          <li>6年女子100m 準優勝</li>
+          <li>5年女子100m 準優勝</li>
+          <li>4年女子100m 3位・5位入賞</li>
+          <li>共通女子走り高跳び 優勝</li>
+          <li>共通女子ジャベリックボール投げ 準優勝</li>
+          <li>共通女子コンバインド 準優勝</li>
+          <li>共通女子4×100mR 準優勝</li>
+        </ul>
+      </details>
+
+      <!-- Challenge Cup 31 -->
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第31回 ジュニア陸上競技 チャレンジカップ</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-1">
+          <li>4年男子60mH 準優勝・3位</li>
+          <li>5年男子100m 3位</li>
+          <li>5年男子80mH 3位</li>
+          <li>6年男子80mH 優勝・7位</li>
+          <li>共通男子4×100mR 4位</li>
+          <li>4年女子60mH 6位</li>
+          <li>5年女子100m 5位</li>
+          <li>6年女子80mH 準優勝</li>
+          <li>6年女子走り幅跳び 準優勝</li>
+          <li>6年女子ジャベリックボール投げ 4位・6位</li>
+          <li>3・4年女子4×100mR 6位</li>
+          <li>共通女子4×100mR 5位</li>
+          <li>男女混合4×100mR 6位</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <!-- 2024 -->
+  <section id="y2024" class="max-w-6xl mx-auto px-4 pb-16">
+    <div class="flex items-end justify-between gap-4 mb-4">
+      <div>
+        <div class="text-brand-pink font-bold tracking-widest text-xs">YEAR</div>
+        <h2 class="text-3xl md:text-4xl font-black">2024年</h2>
+      </div>
+    </div>
+
+    <div class="space-y-3">
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第51回 全日本中学校選手権</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
+          <li>女子100mH 2名出場（うち1名 5位入賞）</li>
+        </ul>
+      </details>
+
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第52回 関東中学校陸上選手権</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
+          <li>女子100mH 2名出場（うち1名 準優勝）</li>
+        </ul>
+      </details>
+
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第70回 全日本中学校通信陸上競技 神奈川県大会</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
+          <li>女子100mH 優勝・3位</li>
+          <li>女子共通200m 7位</li>
+        </ul>
+      </details>
+
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第37回 神奈川県中学校選抜陸上競技大会</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-1">
+          <li>1年男子100m 6位</li>
+          <li>女子共通200m 準優勝</li>
+          <li>女子共通100mH 優勝・5位・7位</li>
+        </ul>
+      </details>
+
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">日清食品カップ 全国小学生陸上競技交流大会 神奈川県大会</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-1">
+          <li>5年男子100m 5位</li>
+          <li>6年男子100m 4位</li>
+          <li>5年女子100m 準優勝・4位</li>
+          <li>女子コンバインドB 5位</li>
+        </ul>
+      </details>
+
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第29回 ジュニア陸上競技 チャレンジカップ</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-1">
+          <li>4年男子60mH 準優勝</li>
+          <li>5年男子80mH 優勝</li>
+          <li>3・4年男子4×100mR 5位</li>
+          <li>女子3年60m 5位</li>
+          <li>5年女子80mH 優勝・3位・8位</li>
+          <li>5年女子ジャベリックボール投げ 4位</li>
+          <li>男女混合4×100mR 7位</li>
+        </ul>
+      </details>
+
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">第30回 ジュニア陸上競技 チャレンジカップ</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-1">
+          <li>3年男子60mH 4位</li>
+          <li>4年男子60m 6位</li>
+          <li>4年男子60mH 3位・6位</li>
+          <li>5年男子80mH 準優勝</li>
+          <li>6年男子800m 6位</li>
+          <li>6年男子80mH 6位</li>
+          <li>3・4年男子4×100mR 準優勝</li>
+          <li>3年女子60m 8位</li>
+          <li>5年女子80mH 準優勝</li>
+          <li>5年女子走幅跳 5位</li>
+          <li>5年女子ジャベリックボール投げ 4位・5位</li>
+          <li>男女混合4×100mR 準優勝</li>
+        </ul>
+      </details>
+
+      <details class="card rounded-2xl p-4 md:p-5">
+        <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
+          <div class="font-bold text-lg md:text-xl">神奈川県小学生陸上競技 秋季交流大会</div>
+          <div class="chev text-gray-400 transition">▼</div>
+        </summary>
+        <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-1">
+          <li>3年男子80m 6位</li>
+          <li>4年男子100m 優勝</li>
+          <li>6年男子100m 6位</li>
+          <li>6年男子800m 6位</li>
+          <li>共通男子80mH 3位・8位</li>
+          <li>共通男子4×100mR 優勝</li>
+          <li>3年女子80m 3位・7位</li>
+          <li>5年女子100m 3位</li>
+          <li>共通女子80mH 準優勝・5位</li>
+          <li>共通女子4×100mR 6位</li>
+          <li>共通女子ジャベリックボール投げ 3位</li>
+          <li>共通女子三種競技 8位</li>
+        </ul>
+      </details>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/5 bg-brand-black text-gray-500">
+    <div class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+      <div class="text-sm">
+        <a href="index.html" class="text-white font-bold hover:text-brand-pink transition">HappinessAC</a>
+        <span class="text-gray-600"> / 実績</span>
+      </div>
+      <div class="text-xs">&copy; HappinessAC All Rights Reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>
