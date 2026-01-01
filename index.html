@@ -126,6 +126,97 @@
     }
 
     html, body { overflow-x: hidden; }
+
+    /* Common Header/Footer Styles */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .site-header .brand {
+      margin-bottom: 8px;
+    }
+
+    .brand-link {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      font-size: 1.25rem;
+    }
+
+    .site-nav, .footer-nav {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .site-nav a, .footer-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+
+    .site-nav a:hover, .footer-nav a:hover {
+      color: #ff2aa1;
+    }
+
+    .site-footer {
+      margin-top: 40px;
+      padding: 18px 16px;
+      background: #0b0b10;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+    }
+
+    .back-to-top {
+      display: block;
+      margin: 18px auto 8px;
+      text-align: center;
+      color: #ff2aa1;
+      font-weight: 800;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .back-to-top:hover {
+      color: #fff;
+    }
+
+    .copyright {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.75rem;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 768px) {
+      .site-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 24px;
+      }
+
+      .site-header .brand {
+        margin-bottom: 0;
+      }
+
+      .site-nav {
+        gap: 20px;
+      }
+
+      .site-nav a, .footer-nav a {
+        font-size: 0.9375rem;
+      }
+    }
   </style>
 </head>
 
@@ -134,24 +225,22 @@
   <!-- Global noise -->
   <div class="fixed inset-0 bg-noise pointer-events-none z-50 mix-blend-overlay"></div>
 
-  <!-- Top nav (スマホ・PC共通) -->
-  <div class="sticky top-0 z-40 bg-brand-black/80 backdrop-blur border-b border-white/5">
-    <div class="container mx-auto px-4 md:px-6 py-3 flex items-center justify-between">
-      <a href="index.html" class="nav-brand hidden md:block font-display font-black italic tracking-tight text-xl">
-        HAPPINESS<span class="text-brand-pink">AC</span>
-      </a>
-      <nav class="text-xs md:text-sm font-bold text-gray-300 flex gap-3 md:gap-6 overflow-x-auto whitespace-nowrap">
-        <a href="index.html#about" class="hover:text-white transition">指導軸</a>
-        <a href="classes.html" class="hover:text-white transition">クラス</a>
-        <a href="classes.html#fees" class="hover:text-white transition">会費</a>
-        <a href="online-personal.html" class="hover:text-white transition">オンライン</a>
-        <a href="coaches.html" class="hover:text-white transition">指導者</a>
-        <a href="results.html" class="hover:text-white transition">実績</a>
-        <a href="#news" class="nav-news hover:text-white transition">新着</a>
-        <a href="index.html#join" class="text-brand-pink hover:text-white transition">体験・入会</a>
-      </nav>
+  <!-- Common Header -->
+  <header class="site-header">
+    <div class="brand">
+      <a href="index.html" class="brand-link">HAPPINESS<span style="color: #ff2aa1;">AC</span></a>
     </div>
-  </div>
+
+    <nav class="site-nav">
+      <a href="index.html">トップ</a>
+      <a href="classes.html">クラス</a>
+      <a href="fees.html">会費</a>
+      <a href="coaches.html">指導者</a>
+      <a href="online-personal.html">オンライン</a>
+      <a href="results.html">実績</a>
+      <a href="contact.html">体験・問合せ</a>
+    </nav>
+  </header>
 
   <!-- HERO -->
   <header id="top" class="hero relative min-h-[78vh] md:min-h-[92vh] flex flex-col justify-center items-center overflow-hidden pt-14 md:pt-24 pb-10 md:pb-14">
@@ -438,6 +527,22 @@
       });
     })();
   </script>
+
+  <!-- Common Footer -->
+  <footer class="site-footer">
+    <nav class="footer-nav">
+      <a href="index.html">トップ</a>
+      <a href="classes.html">クラス</a>
+      <a href="fees.html">会費</a>
+      <a href="coaches.html">指導者</a>
+      <a href="online-personal.html">オンライン</a>
+      <a href="results.html">実績</a>
+      <a href="contact.html">体験・問合せ</a>
+    </nav>
+
+    <a class="back-to-top" href="index.html">← トップページへ戻る</a>
+    <div class="copyright">© HappinessAC All Rights Reserved.</div>
+  </footer>
 
 </body>
 </html>
