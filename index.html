@@ -224,6 +224,52 @@
         font-size: 0.9375rem;
       }
     }
+
+    /* ===== スマホ時だけメニュー固定 ===== */
+    @media (max-width: 768px) {
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+        background: rgba(0,0,0,0.85);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      /* stickyで足りない/効かない場合に備えて余白 */
+      body {
+        scroll-padding-top: 70px;
+      }
+    }
+
+    /* ===== NEWSをスクロール窓にする ===== */
+    .news-window {
+      max-height: 360px;
+      overflow-y: auto;
+      padding-right: 6px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.35);
+    }
+
+    /* PCは少し高めに */
+    @media (min-width: 769px) {
+      .news-window {
+        max-height: 420px;
+      }
+    }
+
+    /* スクロールバーを見やすく（効くブラウザだけ反映） */
+    .news-window::-webkit-scrollbar {
+      width: 8px;
+    }
+    .news-window::-webkit-scrollbar-thumb {
+      background: rgba(255,255,255,0.2);
+      border-radius: 8px;
+    }
+    .news-window::-webkit-scrollbar-track {
+      background: transparent;
+    }
   </style>
 </head>
 
@@ -299,26 +345,29 @@
       </div>
     </div>
 
-    <div class="grid gap-3">
-      <!-- 最新 -->
-      <div class="block rounded-xl border border-white/10 bg-white/5 p-4">
-        <div class="text-xs text-white/60">2026/01/01</div>
-        <div class="mt-1 font-semibold">
-          1月の体験会ページを更新しました。
-          <a href="https://happinessac.fly.dev/"
-             target="_blank"
-             rel="noopener"
-             class="ml-2 underline text-pink-400 hover:text-pink-300">
-            申し込みページはこちら
-          </a>
+    <!-- 新着情報スクロール窓 -->
+    <div class="news-window">
+      <div class="grid gap-3">
+        <!-- 最新 -->
+        <div class="block rounded-xl border border-white/10 bg-white/5 p-4">
+          <div class="text-xs text-white/60">2026/01/01</div>
+          <div class="mt-1 font-semibold">
+            1月の体験会ページを更新しました。
+            <a href="https://happinessac.fly.dev/"
+               target="_blank"
+               rel="noopener"
+               class="ml-2 underline text-pink-400 hover:text-pink-300">
+              申し込みページはこちら
+            </a>
+          </div>
         </div>
-      </div>
 
-      <!-- 次 -->
-      <div class="block rounded-xl border border-white/10 bg-white/5 p-4">
-        <div class="text-xs text-white/60">2026/01/01</div>
-        <div class="mt-1 font-semibold">
-          ホームページをリニューアルしました。
+        <!-- 次 -->
+        <div class="block rounded-xl border border-white/10 bg-white/5 p-4">
+          <div class="text-xs text-white/60">2026/01/01</div>
+          <div class="mt-1 font-semibold">
+            ホームページをリニューアルしました。
+          </div>
         </div>
       </div>
     </div>

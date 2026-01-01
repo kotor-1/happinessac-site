@@ -165,6 +165,22 @@
         font-size: 0.9375rem;
       }
     }
+
+    /* ===== スマホ時だけメニュー固定 ===== */
+    @media (max-width: 768px) {
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+        backdrop-filter: blur(10px);
+        background: rgba(0,0,0,0.85);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+
+      body {
+        scroll-padding-top: 70px;
+      }
+    }
   </style>
 </head>
 
