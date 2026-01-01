@@ -77,13 +77,28 @@
         スマホでも見やすいよう、大会ごとに折りたたみ表示にしています。
       </p>
 
-      <div class="mt-6 flex flex-col sm:flex-row gap-3">
-        <a href="#y2025" class="card px-5 py-3 font-bold rounded-xl hover:bg-white/10 transition text-center">
-          2025年へ ↓
-        </a>
-        <a href="#y2024" class="card px-5 py-3 font-bold rounded-xl hover:bg-white/10 transition text-center">
-          2024年へ ↓
-        </a>
+      <!-- Quick Jump -->
+      <div class="max-w-5xl mx-auto mt-6 mb-10">
+        <div class="bg-black/40 border border-white/10 p-4 md:p-5 rounded-sm">
+          <div class="text-xs text-brand-pink font-bold tracking-widest mb-3">QUICK JUMP</div>
+
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a href="#y2025"
+               class="w-full sm:w-auto flex-1 border border-white/15 text-white font-bold py-3 px-4 rounded-sm hover:border-brand-pink transition text-center">
+              2025年へ ↓
+            </a>
+
+            <a href="#y2024"
+               class="w-full sm:w-auto flex-1 border border-white/15 text-white font-bold py-3 px-4 rounded-sm hover:border-brand-pink transition text-center">
+              2024年へ ↓
+            </a>
+
+            <a href="#past"
+               class="w-full sm:w-auto flex-1 bg-brand-pink text-black font-bold py-3 px-4 rounded-sm hover:bg-white transition text-center">
+              さらに過去の実績 ↓
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -139,7 +154,7 @@
     <div class="flex items-end justify-between gap-4 mb-4">
       <div>
         <div class="text-brand-pink font-bold tracking-widest text-xs">YEAR</div>
-        <h2 class="text-3xl md:text-4xl font-black">2025年</h2>
+        <h2 id="y2025" class="text-3xl md:text-4xl font-black">2025年</h2>
       </div>
     </div>
 
@@ -260,7 +275,7 @@
     <div class="flex items-end justify-between gap-4 mb-4">
       <div>
         <div class="text-brand-pink font-bold tracking-widest text-xs">YEAR</div>
-        <h2 class="text-3xl md:text-4xl font-black">2024年</h2>
+        <h2 id="y2024" class="text-3xl md:text-4xl font-black">2024年</h2>
       </div>
     </div>
 
@@ -381,350 +396,112 @@
     </div>
   </section>
 
-  <!-- 過去の実績 -->
-  <section id="past-results" class="max-w-6xl mx-auto px-4 pb-16">
-    <div class="flex items-end justify-between gap-4 mb-4">
-      <div>
-        <div class="text-brand-pink font-bold tracking-widest text-xs">PAST RESULTS</div>
-        <h2 class="text-3xl md:text-4xl font-black">過去の実績</h2>
-      </div>
-    </div>
+  <!-- Past Achievements (Collapsible) -->
+  <div id="past" class="max-w-5xl mx-auto px-4 mt-12">
+    <details class="bg-black/40 border border-white/10 rounded-sm overflow-hidden">
+      <summary class="cursor-pointer list-none px-5 py-4 flex items-center justify-between gap-4 hover:bg-white/5 transition">
+        <div>
+          <div class="text-brand-pink font-bold tracking-widest text-xs">PAST ACHIEVEMENTS</div>
+          <h2 class="text-2xl md:text-3xl font-black mt-1">さらに過去の実績（2017〜2023）</h2>
+          <p class="text-xs text-gray-400 mt-1">タップで開閉できます</p>
+        </div>
+        <span class="text-brand-pink font-bold text-xl select-none">＋</span>
+      </summary>
 
-    <div class="space-y-6">
-      <!-- 2023年度 -->
-      <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">2023年度</h3>
-        <div class="space-y-3">
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第39回全国小学生陸上競技交流大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>男子コンバインドA出場（神奈川県5連覇）</li>
+      <div class="px-5 pb-6 pt-2 border-t border-white/10">
+        <div class="space-y-6">
+          <!-- 2023年度 -->
+          <div class="mt-6">
+            <h3 class="text-xl font-bold text-white mb-3">2023年度</h3>
+            <ul class="text-sm text-gray-300 space-y-2 leading-relaxed">
+              <li>・第39回全国小学生陸上競技交流大会 男子コンバインドA出場（神奈川県5連覇）</li>
+              <li>・全日本中学校陸上競技選手権 男子200m4位入賞、女子100m出場、男子800m出場、女子100mハードル出場</li>
+              <li>・全国高校総体陸上競技大会 女子やり投げ出場</li>
+              <li>・第96回関東陸上競技選手権 女子100mハードル出場</li>
+              <li>・全日本実業団対抗陸上競技 女子100mハードル出場</li>
             </ul>
-          </details>
+          </div>
 
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全日本中学校陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>男子200m 4位入賞</li>
-              <li>女子100m 出場</li>
-              <li>男子800m 出場</li>
-              <li>女子100mハードル 出場</li>
+          <!-- 2022年度 -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">2022年度</h3>
+            <ul class="text-sm text-gray-300 space-y-2 leading-relaxed">
+              <li>・第38回全国小学生陸上競技交流大会 男子コンバインドA 出場</li>
+              <li>・全国中学校陸上競技大会 女子100m 出場、女子100mハードル 出場</li>
+              <li>・ジュニアオリンピックU16日本選手権 女子ジャベリックスロー 出場</li>
+              <li>・第95回関東陸上競技選手権 女子100mハードル 7位入賞</li>
+              <li>・全日本実業団対抗陸上競技選手権 女子100mハードル 出場</li>
+              <li>・日本陸上競技大阪大会U16の部 女子60mハードル 7位入賞</li>
             </ul>
-          </details>
+          </div>
 
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全国高校総体陸上競技大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子やり投げ 出場</li>
+          <!-- 2021年度 -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">2021年度</h3>
+            <ul class="text-sm text-gray-300 space-y-2 leading-relaxed">
+              <li>・第37回全国小学生陸上競技交流大会 女子コンバインドA 準優勝、女子100m 16位、男子コンバインドA 出場</li>
+              <li>・ジュニアオリンピックU16日本選手権 女子ジャベリックスロー 出場</li>
+              <li>・第94回関東陸上競技選手権 女子100mハードル 6位入賞</li>
+              <li>・全日本実業団対抗陸上競技選手権 女子100mハードル 出場</li>
             </ul>
-          </details>
+          </div>
 
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第96回関東陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 出場</li>
+          <!-- 2020年度 -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">2020年度</h3>
+            <ul class="text-sm text-gray-300 space-y-2 leading-relaxed">
+              <li>・第36回全国小学生陸上競技交流大会 ※全国大会中止（都道府県大会ランキングにて日本ランキング4位）</li>
+              <li>・全日本実業団対抗陸上競技選手権 女子100mハードル 出場</li>
+              <li>・第104回日本陸上競技選手権室内大会 女子60mハードル 出場</li>
             </ul>
-          </details>
+          </div>
 
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全日本実業団対抗陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 出場</li>
+          <!-- 2019年度 -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">2019年度</h3>
+            <ul class="text-sm text-gray-300 space-y-2 leading-relaxed">
+              <li>・第35回全国小学生陸上競技交流大会 男子コンバインドA 準優勝、女子コンバインドA 出場</li>
+              <li>・第92回関東陸上競技選手権 女子100mハードル 出場</li>
+              <li>・全日本実業団対抗陸上競技選手権 女子100m 出場、女子200m 出場、女子100mハードル 出場</li>
             </ul>
-          </details>
+          </div>
+
+          <!-- 2018年度 -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">2018年度</h3>
+            <ul class="text-sm text-gray-300 space-y-2 leading-relaxed">
+              <li>・第34回全国小学生陸上競技交流大会神奈川県大会 女子80mハードル 準優勝、女子100m 準優勝</li>
+              <li>・第91回関東陸上競技選手権 女子100mハードル 出場</li>
+              <li>・全日本実業団対抗陸上競技選手権 女子200m 出場、女子100mハードル 出場</li>
+            </ul>
+          </div>
+
+          <!-- 2017年度 -->
+          <div>
+            <h3 class="text-xl font-bold text-white mb-3">2017年度</h3>
+            <ul class="text-sm text-gray-300 space-y-2 leading-relaxed">
+              <li>・第33回全国小学生陸上競技交流大会 女子80mハードル 出場</li>
+              <li>・第48回ジュニアオリンピック 女子ジャベリックスロー 出場</li>
+              <li>・U20日本室内陸上競技大阪大会 女子60mハードル 出場</li>
+              <li>・第90回関東陸上競技選手権 女子100mハードル 出場</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </details>
+  </div>
 
-      <!-- 2022年度 -->
-      <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">2022年度</h3>
-        <div class="space-y-3">
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第38回全国小学生陸上競技交流大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>男子コンバインドA 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全国中学校陸上競技大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100m 出場</li>
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">ジュニアオリンピックU16日本選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子ジャベリックスロー 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第95回関東陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 7位入賞</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全日本実業団対抗陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">日本陸上競技大阪大会U16の部</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子60mハードル 7位入賞</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-
-      <!-- 2021年度 -->
-      <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">2021年度</h3>
-        <div class="space-y-3">
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第37回全国小学生陸上競技交流大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子コンバインドA 準優勝</li>
-              <li>女子100m 16位</li>
-              <li>男子コンバインドA 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">ジュニアオリンピックU16日本選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子ジャベリックスロー 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第94回関東陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 6位入賞</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全日本実業団対抗陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-
-      <!-- 2020年度 -->
-      <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">2020年度</h3>
-        <div class="space-y-3">
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第36回全国小学生陸上競技交流大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>※全国大会中止（都道府県大会ランキングにて日本ランキング4位）</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全日本実業団対抗陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第104回日本陸上競技選手権室内大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子60mハードル 出場</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-
-      <!-- 2019年度 -->
-      <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">2019年度</h3>
-        <div class="space-y-3">
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第35回全国小学生陸上競技交流大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>男子コンバインドA 準優勝</li>
-              <li>女子コンバインドA 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第92回関東陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全日本実業団対抗陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100m 出場</li>
-              <li>女子200m 出場</li>
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-
-      <!-- 2018年度 -->
-      <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">2018年度</h3>
-        <div class="space-y-3">
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第34回全国小学生陸上競技交流大会神奈川県大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子80mハードル 準優勝</li>
-              <li>女子100m 準優勝</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第91回関東陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">全日本実業団対抗陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子200m 出場</li>
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-
-      <!-- 2017年度 -->
-      <div>
-        <h3 class="text-2xl md:text-3xl font-bold mb-4">2017年度</h3>
-        <div class="space-y-3">
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第33回全国小学生陸上競技交流大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子80mハードル 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第48回ジュニアオリンピック</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子ジャベリックスロー 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">U20日本室内陸上競技大阪大会</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子60mハードル 出場</li>
-            </ul>
-          </details>
-
-          <details class="card rounded-2xl p-4 md:p-5">
-            <summary class="cursor-pointer list-none flex items-center justify-between gap-4">
-              <div class="font-bold text-lg md:text-xl">第90回関東陸上競技選手権</div>
-              <div class="chev text-gray-400 transition">▼</div>
-            </summary>
-            <ul class="mt-4 text-sm md:text-base text-gray-200 leading-relaxed list-disc pl-5 space-y-2">
-              <li>女子100mハードル 出場</li>
-            </ul>
-          </details>
-        </div>
-      </div>
-    </div>
-  </section>
+  <script>
+    // summary右端の「＋」を開閉で切り替え（見た目だけ）
+    document.addEventListener('DOMContentLoaded', () => {
+      const details = document.querySelector('#past details');
+      if (!details) return;
+      const plus = details.querySelector('summary span');
+      const update = () => { plus.textContent = details.open ? '−' : '＋'; };
+      details.addEventListener('toggle', update);
+      update();
+    });
+  </script>
 
   <footer class="border-t border-white/5 bg-brand-black text-gray-500">
     <div class="max-w-6xl mx-auto px-4 py-10 flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
