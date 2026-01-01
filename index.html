@@ -248,12 +248,25 @@
 
     <blockquote 
       class="instagram-media" 
-      data-instgrm-permalink="https://www.instagram.com/p/POST_ID/"
+      data-instgrm-permalink="https://www.instagram.com/p/DQi46aLkrqs/"
       data-instgrm-version="14"
-      style="margin: 0 auto;">
+      style="margin: 0 auto; max-width:540px; width:100%;">
     </blockquote>
 
-    <script async src="https://www.instagram.com/embed.js"></script>
+    <script>
+      // embed.jsの重複読み込み防止とキャッシュ対策
+      if (!document.querySelector('script[src*="instagram.com/embed.js"]')) {
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.instagram.com/embed.js?v=' + Date.now();
+        document.body.appendChild(script);
+      } else {
+        // 既に読み込まれている場合は再評価
+        if (window.instgrm) {
+          window.instgrm.Embeds.process();
+        }
+      }
+    </script>
 
     <p class="text-center mt-4">
       <a href="https://www.instagram.com/virds_koto/" target="_blank" rel="noopener" class="text-brand-pink hover:text-white transition underline">
