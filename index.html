@@ -292,6 +292,35 @@
     .youtube-link:hover {
       text-decoration: underline;
     }
+
+    /* ===== SNS共通カード（Instagram / YouTube） ===== */
+    .sns-card {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto 32px;
+      padding: 20px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* 高さを揃えるための最低高さ */
+    .sns-card-inner {
+      min-height: 260px;
+    }
+
+    /* ===== YouTube Subscribe ボタン調整 ===== */
+    .youtube-section .g-ytsubscribe {
+      margin-top: 12px;
+    }
+
+    /* スマホ時だけ中央寄せ */
+    @media (max-width: 768px) {
+      .youtube-section .g-ytsubscribe {
+        display: flex;
+        justify-content: center;
+      }
+    }
   </style>
 </head>
 
@@ -396,52 +425,56 @@
   </section>
 
   <!-- YouTube Section -->
-  <section id="youtube" class="mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
-    <div class="flex items-end justify-between gap-4 mb-6">
-      <div>
-        <div class="text-brand-pink font-bold tracking-widest text-xs">YOUTUBE</div>
-        <h2 class="text-2xl md:text-3xl font-bold">古藤監督のYouTube</h2>
+  <section id="youtube" class="youtube-section sns-card mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
+    <div class="sns-card-inner">
+      <div class="flex items-end justify-between gap-4 mb-6">
+        <div>
+          <div class="text-brand-pink font-bold tracking-widest text-xs">YOUTUBE</div>
+          <h2 class="text-2xl md:text-3xl font-bold">古藤監督のYouTube</h2>
+        </div>
       </div>
-    </div>
 
-    <p class="youtube-note text-gray-300 text-sm md:text-base mb-4">
-      最新動画はYouTubeで配信中です。
-    </p>
+      <p class="youtube-note text-gray-300 text-sm md:text-base mb-4">
+        最新動画はYouTubeで配信中です。
+      </p>
 
-    <!-- YouTube Subscribe Button -->
-    <div class="g-ytsubscribe mb-4"
-         data-channelid="UCLC5S64sFXDtIyDJsINI2TQ"
-         data-layout="full"
-         data-count="default">
-    </div>
+      <!-- Subscribe Button -->
+      <div class="g-ytsubscribe mb-4"
+           data-channelid="UCLC5S64sFXDtIyDJsINI2TQ"
+           data-layout="full"
+           data-count="default">
+      </div>
 
-    <div class="youtube-link-wrap">
-      <a href="https://www.youtube.com/@virds2761"
-         target="_blank"
-         rel="noopener"
-         class="youtube-link inline-block border border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white px-6 py-3 rounded-sm font-bold transition">
-        チャンネルを見る →
-      </a>
+      <div class="youtube-link-wrap">
+        <a href="https://www.youtube.com/@virds2761"
+           target="_blank"
+           rel="noopener"
+           class="youtube-link inline-block border border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white px-6 py-3 rounded-sm font-bold transition">
+          チャンネルを見る →
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Instagram Section -->
-  <section id="instagram" class="mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
-    <div class="flex items-end justify-between gap-4 mb-6">
-      <div>
-        <div class="text-brand-pink font-bold tracking-widest text-xs">SOCIAL</div>
-        <h2 class="text-2xl md:text-3xl font-bold">古藤監督のInstagram</h2>
+  <section id="instagram" class="instagram-section sns-card mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
+    <div class="sns-card-inner">
+      <div class="flex items-end justify-between gap-4 mb-6">
+        <div>
+          <div class="text-brand-pink font-bold tracking-widest text-xs">SOCIAL</div>
+          <h2 class="text-2xl md:text-3xl font-bold">古藤監督のInstagram</h2>
+        </div>
       </div>
+
+      <blockquote 
+        class="instagram-media" 
+        data-instgrm-permalink="https://www.instagram.com/p/DQi46aLkrqs/" 
+        data-instgrm-version="14"
+        style="margin: 0 auto; max-width:540px; width:100%;">
+      </blockquote>
+
+      <script async src="//www.instagram.com/embed.js"></script>
     </div>
-
-    <blockquote 
-      class="instagram-media" 
-      data-instgrm-permalink="https://www.instagram.com/p/DQi46aLkrqs/" 
-      data-instgrm-version="14"
-      style="margin: 0 auto; max-width:540px; width:100%;">
-    </blockquote>
-
-    <script async src="//www.instagram.com/embed.js"></script>
   </section>
 
   <!-- YouTube Platform Script（ページ内に1回だけ） -->
