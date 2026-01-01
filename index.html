@@ -86,6 +86,35 @@
     .coach-card:hover img{ filter: grayscale(0); } /* PC用 */
     .coach-card.is-active img{ filter: grayscale(0); } /* スマホSafari用 */
 
+    /* SOCIAL section */
+    .social .section-title { margin: 6px 0 14px; }
+
+    .ig-grid{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      align-items: start;
+    }
+
+    /* Make embeds responsive */
+    .instagram-media{
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+
+    /* YouTube */
+    .yt-embed { margin-top: 18px; }
+
+    .social-actions{
+      margin: 10px 0 18px;
+    }
+
+    /* Mobile: stack Instagram posts */
+    @media (max-width: 900px){
+      .ig-grid{
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* mobile header cleanup */
     @media (max-width: 640px) {
@@ -228,8 +257,8 @@
     </div>
   </section>
 
-  <!-- Instagram Section -->
-  <section id="instagram" class="mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
+  <!-- SOCIAL (Instagram + YouTube) : Always below NEWS -->
+  <section id="social" class="mx-auto max-w-6xl px-4 py-10 md:py-14 bg-brand-black">
     <div class="flex items-end justify-between gap-4 mb-6">
       <div>
         <div class="text-brand-pink font-bold tracking-widest text-xs">SOCIAL</div>
@@ -237,53 +266,63 @@
       </div>
     </div>
 
-    <!-- Instagram最新3件表示 -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-      <!-- 投稿1 -->
-      <blockquote 
-        class="instagram-media" 
-        data-instgrm-permalink="https://www.instagram.com/p/DQi46aLkrqs/"
-        data-instgrm-version="14"
-        style="margin: 0 auto; max-width:100%; width:100%;">
-      </blockquote>
+    <div class="social-wrap">
+      <!-- Instagram embeds (official) -->
+      <div class="ig-grid">
+        <!-- ① -->
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/DQi46aLkrqs/"
+          data-instgrm-version="14"
+          style="margin:0; width:100%; max-width:540px;">
+        </blockquote>
 
-      <!-- 投稿2（最新2件目 - 投稿URLを追加してください） -->
-      <blockquote 
-        class="instagram-media" 
-        data-instgrm-permalink="https://www.instagram.com/p/DQi46aLkrqs/"
-        data-instgrm-version="14"
-        style="margin: 0 auto; max-width:100%; width:100%;">
-      </blockquote>
+        <!-- ② ここを最新投稿URLに差し替え -->
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/XXXXXXXXXXX/"
+          data-instgrm-version="14"
+          style="margin:0; width:100%; max-width:540px;">
+        </blockquote>
 
-      <!-- 投稿3（最新3件目 - 投稿URLを追加してください） -->
-      <blockquote 
-        class="instagram-media" 
-        data-instgrm-permalink="https://www.instagram.com/p/DQi46aLkrqs/"
-        data-instgrm-version="14"
-        style="margin: 0 auto; max-width:100%; width:100%;">
-      </blockquote>
+        <!-- ③ ここを最新投稿URLに差し替え -->
+        <blockquote class="instagram-media"
+          data-instgrm-permalink="https://www.instagram.com/p/YYYYYYYYYYY/"
+          data-instgrm-version="14"
+          style="margin:0; width:100%; max-width:540px;">
+        </blockquote>
+      </div>
+
+      <!-- Instagram embed script (only once per page) -->
+      <script async src="https://www.instagram.com/embed.js"></script>
+
+      <div class="social-actions text-center">
+        <a href="https://www.instagram.com/virds_koto/" target="_blank" rel="noopener" class="inline-block border border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white px-6 py-3 rounded-sm font-bold transition">
+          Instagramを開く
+        </a>
+      </div>
+
+      <div class="yt-head mt-8">
+        <h2 class="text-2xl md:text-3xl font-bold">YouTube</h2>
+      </div>
+
+      <div class="yt-embed">
+        <!-- チャンネルページへの導線＋代表動画1本を埋め込み -->
+        <iframe
+          width="560" height="315"
+          src="https://www.youtube.com/embed?listType=user_uploads&list=virds2761"
+          title="YouTube"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          style="width:100%; aspect-ratio:16/9; border:0; border-radius:12px;">
+        </iframe>
+
+        <div class="social-actions text-center mt-4">
+          <a href="https://www.youtube.com/@virds2761" target="_blank" rel="noopener" class="inline-block border border-brand-pink text-brand-pink hover:bg-brand-pink hover:text-white px-6 py-3 rounded-sm font-bold transition">
+            YouTubeチャンネルを見る
+          </a>
+        </div>
+      </div>
     </div>
-
-    <script>
-      // embed.jsの重複読み込み防止とキャッシュ対策
-      if (!document.querySelector('script[src*="instagram.com/embed.js"]')) {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = 'https://www.instagram.com/embed.js?v=' + Date.now();
-        document.body.appendChild(script);
-      } else {
-        // 既に読み込まれている場合は再評価
-        if (window.instgrm) {
-          window.instgrm.Embeds.process();
-        }
-      }
-    </script>
-
-    <p class="text-center mt-4">
-      <a href="https://www.instagram.com/virds_koto/" target="_blank" rel="noopener" class="text-brand-pink hover:text-white transition underline">
-        ▶ Instagramを見る
-      </a>
-    </p>
   </section>
 
   <!-- クラス・会費 -->
