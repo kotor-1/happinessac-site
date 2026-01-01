@@ -86,15 +86,6 @@
     .coach-card:hover img{ filter: grayscale(0); } /* PC用 */
     .coach-card.is-active img{ filter: grayscale(0); } /* スマホSafari用 */
 
-    /* PCでも新着情報を下に落とさない（order指定の上書き） */
-    main { display: flex; flex-direction: column; }
-    @media (min-width: 768px) {
-      /* PCでも新着情報を上部に */
-      #news { order: 1; }
-      #about { order: 2; }
-      #join { order: 3; }
-      #classes-link { order: 4; }
-    }
 
     /* mobile header cleanup */
     @media (max-width: 640px) {
@@ -242,7 +233,7 @@
     <div class="flex items-end justify-between gap-4 mb-6">
       <div>
         <div class="text-brand-pink font-bold tracking-widest text-xs">SOCIAL</div>
-        <h2 class="text-2xl md:text-3xl font-bold">Instagram</h2>
+        <h2 class="text-2xl md:text-3xl font-bold">古藤監督のInstagram</h2>
       </div>
     </div>
 
