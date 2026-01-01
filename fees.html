@@ -19,7 +19,7 @@
   <nav class="site-nav">
     <a href="index.html">トップ</a>
     <a href="classes.html">クラス</a>
-    <a href="fees.html">会費</a>
+    <a href="fees.html" class="active">会費</a>
     <a href="coaches.html">指導者</a>
     <a href="online-personal.html">オンライン</a>
     <a href="results.html">実績</a>
@@ -68,6 +68,13 @@
 
   .site-nav a:hover, .footer-nav a:hover {
     color: #ff2aa1;
+  }
+
+  /* 現在地メニュー表示 */
+  .site-nav a.active, .footer-nav a.active {
+    color: #ff2f92;
+    font-weight: 700;
+    border-bottom: 2px solid #ff2f92;
   }
 
   .site-footer {
@@ -150,7 +157,7 @@
   <nav class="footer-nav">
     <a href="index.html">トップ</a>
     <a href="classes.html">クラス</a>
-    <a href="fees.html">会費</a>
+    <a href="fees.html" class="active">会費</a>
     <a href="coaches.html">指導者</a>
     <a href="online-personal.html">オンライン</a>
     <a href="results.html">実績</a>
