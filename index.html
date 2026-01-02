@@ -242,22 +242,15 @@
       }
     }
 
-    /* ===== NEWSだけスクロールする枠 ===== */
+    /* ===== NEWS スクロール枠：PC / スマホ 共通 ===== */
     .news-scroll {
-      max-height: 300px;
+      max-height: 280px;
       overflow-y: auto;
       padding-right: 6px;
       scroll-behavior: smooth;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
       scrollbar-color: rgba(255,255,255,.25) transparent;
-    }
-
-    /* スマホ用（2.3枚分） */
-    @media (max-width: 768px) {
-      .news-scroll {
-        max-height: 260px;
-      }
     }
 
     /* スクロールバーを細く（Chrome/Safari） */
