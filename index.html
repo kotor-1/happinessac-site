@@ -244,7 +244,7 @@
 
     /* ===== NEWSだけスクロールする枠 ===== */
     .news-scroll {
-      max-height: 320px;
+      max-height: 340px;
       overflow-y: auto;
       padding-right: 6px;
       scroll-behavior: smooth;
@@ -253,10 +253,10 @@
       scrollbar-color: rgba(255,255,255,.25) transparent;
     }
 
-    /* スマホは少し高さを増やす */
+    /* スマホは少し小さめ（カード2〜3枚見えるくらい） */
     @media (max-width: 768px) {
       .news-scroll {
-        max-height: 380px;
+        max-height: 280px;
       }
     }
 
