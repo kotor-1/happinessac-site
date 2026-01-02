@@ -244,7 +244,7 @@
 
     /* ===== NEWSだけスクロールする枠 ===== */
     .news-scroll {
-      max-height: 340px;
+      max-height: 300px;
       overflow-y: auto;
       padding-right: 6px;
       scroll-behavior: smooth;
@@ -253,20 +253,20 @@
       scrollbar-color: rgba(255,255,255,.25) transparent;
     }
 
-    /* スマホは少し小さめ（カード2〜3枚見えるくらい） */
+    /* スマホ用（2.3枚分） */
     @media (max-width: 768px) {
       .news-scroll {
-        max-height: 280px;
+        max-height: 260px;
       }
     }
 
     /* スクロールバーを細く（Chrome/Safari） */
     .news-scroll::-webkit-scrollbar {
-      width: 6px;
+      width: 4px;
     }
     .news-scroll::-webkit-scrollbar-thumb {
-      background: rgba(255,255,255,.22);
-      border-radius: 10px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 4px;
     }
     .news-scroll::-webkit-scrollbar-track {
       background: transparent;
