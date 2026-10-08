@@ -354,7 +354,7 @@ function todayStr(){const d=new Date();return d.getFullYear()+'-'+String(d.getMo
 function blankMarks(){return{m100:null,m200:null,hj:null,lj:null};}
 function blankAthlete(){return{id:uid(),name:'',sex:'m',grade:5,team:'',absent:false,pb:blankMarks(),rec:blankMarks()};}
 function freshState(){
-  return{v:1,meet:{name:'チーム内記録会',date:todayStr()},teamCount:4,
+  return{v:1,meet:{name:'チーム内記録会',date:todayStr()},teamCount:5,
     teams:TEAM_PRESET.map(([n,c],i)=>({id:'t'+(i+1),name:n+'チーム',color:c})),
     athletes:[],std:clone(DEFAULT_STD),coef:{...DEFAULT_COEF},settings:{...DEFAULT_SETTINGS},sample:false,ui:{...DEFAULT_UI}};
 }
@@ -423,9 +423,9 @@ function save(){clearTimeout(saveTimer);saveTimer=setTimeout(()=>{try{localStora
 
 /* ---------- 仮データ（テスト用） ---------- */
 // 中身を変えたら番号を上げる。保存済みの仮データが新しい内容に置きかわる（本番データは対象外）
-const SAMPLE_VER=2;
+const SAMPLE_VER=3;
 function makeSample(){
-  const s=freshState(); s.sample=true; s.sampleVer=SAMPLE_VER; s.teamCount=2;
+  const s=freshState(); s.sample=true; s.sampleVer=SAMPLE_VER; s.teamCount=5;
   // [名前, 性別, 学年(0=小1), 自己ベスト[100m,200m,走高跳,走幅跳], 今日の記録[同じ順]]
   // null は未登録、'NM' は記録なし。PB更新・自己ベスト以下・初記録・記録なしがひと通り出るようにしてある
   const people=[
@@ -438,7 +438,32 @@ function makeSample(){
     ['小林 悠真','m',2,[17.60,null,0.85,2.70],[17.38,37.20,0.85,2.78]],
     ['加藤 さくら','f',3,[18.10,38.90,0.85,2.55],[17.62,37.80,'NM',2.71]],
     ['吉田 颯',  'm',4,[15.30,32.10,1.10,3.62],[15.25,32.35,1.10,3.70]],
-    ['山田 陽葵','f',2,[16.90,35.60,0.95,2.95],[16.95,35.40,0.95,3.02]]
+    ['山田 陽葵','f',2,[16.90,35.60,0.95,2.95],[16.95,35.40,0.95,3.02]],
+    ['松本 大和', 'm',5,[14.08,28.92,1.15,4.15],[14.30,28.49,1.20,4.29]],
+    ['井上 凛',  'f',4,[15.66,33.16,1.00,3.13],[15.27,33.02,1.05,3.10]],
+    ['木村 樹',  'm',5,[16.03,34.58,1.00,3.17],[15.41,34.77,1.05,3.38]],
+    ['林 芽依',  'f',7,[16.50,34.84,1.00,3.25],[16.53,33.17,1.00,3.47]],
+    ['清水 律',  'm',3,[16.19,35.27,0.95,3.00],[16.26,33.74,'NM',3.19]],
+    ['斎藤 杏',  'f',5,[17.22,37.46,0.90,2.98],[16.67,36.12,0.90,3.03]],
+    ['山口 蒼',  'm',1,[16.18,34.25,0.90,2.98],[16.14,33.81,0.90,2.93]],
+    ['森 結菜',  'f',1,[20.13,43.82,0.70,2.11],[19.44,42.27,0.70,2.27]],
+    ['池田 悠人', 'm',4,[16.02,33.32,0.95,3.33],[16.02,31.80,0.95,3.53]],
+    ['橋本 陽菜', 'f',3,[16.90,35.43,0.95,2.88],[16.71,35.36,0.90,2.94]],
+    ['阿部 朝陽', 'm',6,[13.48,28.01,1.35,4.54],[13.59,27.84,1.35,4.55]],
+    ['石川 紬',  'f',2,[17.10,35.93,0.90,2.76],[17.30,35.91,0.90,2.81]],
+    ['山下 碧',  'm',2,[18.06,38.56,0.85,2.57],[17.50,38.49,0.85,2.74]],
+    ['中島 葵',  'f',6,[16.47,36.05,1.00,3.12],[16.40,35.39,1.05,3.35]],
+    ['石井 湊斗', 'm',0,[19.26,42.57,0.70,2.21],[19.19,41.30,'NM',2.33]],
+    ['小川 澪',  'f',0,[20.96,46.56,0.60,1.83],[20.42,44.27,0.60,1.84]],
+    ['前田 奏太', 'm',8,[13.26,28.34,1.40,4.60],[12.90,27.03,1.45,4.86]],
+    ['岡田 莉子', 'f',5,[14.56,30.44,1.15,3.72],[14.35,30.33,1.20,3.87]],
+    ['長谷川 海翔','m',3,[17.38,38.03,0.90,2.69],[16.75,37.14,0.90,2.82]],
+    ['藤田 花',  'f',7,[13.92,28.34,1.30,4.41],[14.15,28.14,1.30,4.50]],
+    ['後藤 新',  'm',4,[15.90,33.74,1.00,3.22],[15.44,32.44,1.00,'NM']],
+    ['近藤 美月', 'f',2,[17.81,36.88,0.80,2.58],[17.38,36.02,0.85,2.69]],
+    ['村上 晴',  'm',6,[14.95,32.30,1.10,3.58],[14.90,32.58,1.15,3.78]],
+    ['遠藤 千尋', 'f',4,[15.08,31.47,1.05,3.43],[14.89,31.76,1.05,3.55]],
+    ['青木 怜',  'm',1,[16.54,34.15,0.90,2.81],[16.32,33.15,0.95,2.79]]
   ];
   people.forEach(([name,sex,grade,pb,rec])=>{
     const a=blankAthlete(); Object.assign(a,{name,sex,grade});
@@ -840,7 +865,7 @@ function viewData(){
         <div class="btn-row" style="margin-top:8px"><button type="button" class="btn" data-act="restoreText">貼り付けた内容で復元</button></div></details></div>
 
     <div class="card"><h2>はじめからやり直す</h2>
-      <div class="btn-row" style="margin-top:10px"><button type="button" class="btn" data-act="loadSample">仮データ（10人）を読み込む</button>
+      <div class="btn-row" style="margin-top:10px"><button type="button" class="btn" data-act="loadSample">仮データ（35人）を読み込む</button>
         <button type="button" class="btn danger" data-act="resetAll">すべてのデータを消す</button></div></div>
   </section>`;
 }
@@ -958,7 +983,7 @@ const CLICK={
   backupCopy:()=>copyText(backupText(),'バックアップ'),
   restoreText:()=>restoreFrom($('#restoreText').value),
   loadSample:async()=>{
-    if(state.athletes.length&&!state.sample&&!await ask('いまのデータを消して、テスト用の仮データ（10人）を読み込みます。','読み込む',true))return;
+    if(state.athletes.length&&!state.sample&&!await ask('いまのデータを消して、テスト用の仮データ（35人）を読み込みます。','読み込む',true))return;
     state=makeSample();save();render();toast('仮データを読み込みました');
   },
   resetAll:async()=>{
