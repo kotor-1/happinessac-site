@@ -1,398 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>オンラインパーソナル | HappinessAC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>オンラインパーソナル | HappinessAC</title>
+<meta name="description" content="LINE型オンラインパーソナル。月額11,000円（税込）、回数無制限・返信は原則24時間以内。選手・保護者・マスターズ・指導者まで対応します。">
+<meta name="theme-color" content="#F7F4EE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HappinessAC">
+<meta property="og:title" content="オンラインパーソナル | HappinessAC">
+<meta property="og:description" content="LINE型オンラインパーソナル。月額11,000円（税込）、回数無制限・返信は原則24時間以内。選手・保護者・マスターズ・指導者まで対応します。">
+<meta property="og:url" content="https://happinessac.com/online-personal.html">
+<meta property="og:image" content="https://happinessac.com/images/taiken-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&amp;family=Manrope:wght@500;600;700;800&amp;family=Shippori+Mincho+B1:wght@600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css?v=20261018">
+<script>document.documentElement.classList.add('js');</script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PE6EF6C0FT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              pink: '#ff2aa1',
-              black: '#0b0b0f',
-              dark:  '#121216',
-              gray:  '#1f1f2e'
-            }
-          },
-          fontFamily: {
-            sans: ['"Noto Sans JP"', 'sans-serif'],
-            display: ['"Oswald"', 'sans-serif'],
-          },
-          backgroundImage: {
-            noise: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    body { background:#0b0b0f; color:#fff; overflow-x:hidden; }
-    .speed-lines{
-      position:absolute; inset:0;
-      background:repeating-linear-gradient(90deg,transparent 0,transparent 90px,rgba(255,42,161,.03) 90px,rgba(255,42,161,.03) 91px);
-      pointer-events:none; z-index:0;
-      animation:speedMove 14s linear infinite;
-    }
-    @keyframes speedMove { from{transform:translateX(0)} to{transform:translateX(-180px)} }
-
-    .btn-glitch{ position:relative; overflow:hidden; transition:.25s; }
-    .btn-glitch::before{
-      content:''; position:absolute; inset:0; left:-120%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
-      transition:.5s;
-    }
-    .btn-glitch:hover::before{ left:120%; }
-
-    ::-webkit-scrollbar{ width:8px; }
-    ::-webkit-scrollbar-track{ background:#0b0b0f; }
-    ::-webkit-scrollbar-thumb{ background:#ff2aa1; border-radius:4px; }
-
-    .sticky-cta{
-      position:fixed; left:0; bottom:0; width:100%;
-      z-index:60;
-      box-shadow:0 -6px 18px rgba(0,0,0,.35);
-      background:rgba(11,11,15,.95);
-      backdrop-filter: blur(10px);
-      border-top:1px solid rgba(255,42,161,.2);
-    }
-
-    /* Common Header/Footer Styles */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      padding: 12px 16px;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .site-header .brand {
-      margin-bottom: 8px;
-    }
-
-    .brand-link {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      font-size: 1.25rem;
-    }
-
-    .site-nav, .footer-nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .site-nav a, .footer-nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-
-    .site-nav a:hover, .footer-nav a:hover {
-      color: #ff2aa1;
-    }
-
-    /* 現在地メニュー表示 */
-    .site-nav a.active, .footer-nav a.active {
-      color: #ff2f92;
-      font-weight: 700;
-      border-bottom: 2px solid #ff2f92;
-    }
-
-    .site-footer {
-      margin-top: 40px;
-      padding: 18px 16px;
-      background: #0b0b10;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-    }
-
-    .back-to-top {
-      display: block;
-      margin: 18px auto 8px;
-      text-align: center;
-      color: #ff2aa1;
-      font-weight: 800;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .back-to-top:hover {
-      color: #fff;
-    }
-
-    .copyright {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.75rem;
-      margin-top: 8px;
-    }
-
-    @media (min-width: 768px) {
-      .site-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 24px;
-      }
-
-      .site-header .brand {
-        margin-bottom: 0;
-      }
-
-      .site-nav {
-        gap: 20px;
-      }
-
-      .site-nav a, .footer-nav a {
-        font-size: 0.9375rem;
-      }
-    }
-
-    /* ===== スマホ時だけメニュー固定 ===== */
-    @media (max-width: 768px) {
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 9999;
-        backdrop-filter: blur(10px);
-        background: rgba(0,0,0,0.85);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-
-      body {
-        scroll-padding-top: 70px;
-      }
-    }
-  </style>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE6EF6C0FT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-PE6EF6C0FT');
-  </script>
+  gtag('config', 'G-PE6EF6C0FT');
+</script>
 </head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
 
-<body class="font-sans antialiased selection:bg-brand-pink selection:text-white pb-24 md:pb-0">
-
-  <!-- Global noise -->
-  <div class="fixed inset-0 bg-noise pointer-events-none z-50 mix-blend-overlay"></div>
-
-  <!-- Common Header -->
-  <header class="site-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">HAPPINESS<span style="color: #ff2aa1;">AC</span></a>
-    </div>
-
-    <nav class="site-nav">
-      <a href="index.html">トップ</a>
-      <a href="classes.html">クラス・会費</a>
-      <a href="coaches.html">指導者</a>
-      <a href="online-personal.html" class="active">オンライン</a>
-      <a href="results.html">実績</a>
-      <a href="contact.html">体験・問合せ</a>
-    </nav>
-  </header>
-
-  <!-- ONLINE PERSONAL -->
-  <section id="online" class="py-24 bg-brand-black relative overflow-hidden pt-32">
-    <div class="speed-lines opacity-10"></div>
-
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="flex flex-col md:flex-row md:items-end gap-4 mb-12 border-b border-white/10 pb-4">
-        <div>
-          <span class="text-brand-pink font-display font-bold text-sm tracking-widest block mb-1">ONLINE PERSONAL</span>
-          <h2 class="text-4xl md:text-5xl font-black leading-tight">LINE型<br>オンラインパーソナル</h2>
-        </div>
-        <p class="text-gray-400 text-sm md:text-base md:ml-auto max-w-2xl md:pb-2">
-          陸上競技の悩みを抱える方<strong class="text-white">全員</strong>が対象。<br>
-          選手・保護者・マスターズ・学校/クラブ指導者まで、状況に合わせて最適化します。
-        </p>
+<!-- ヘッダー（PCでは上部に固定し、タブで各ページへ移動） -->
+<header class="site-header" id="top" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">HAPPINESS<b>AC</b></span>
+      <span class="brand__sub">神奈川・秦野／大和 ジュニア陸上クラブ</span>
+    </a>
+    <nav class="global-nav" aria-label="メインメニュー">
+      <div class="tabs-nav">
+        <a href="index.html">トップ</a>
+        <a href="classes.html">クラス・会費</a>
+        <a href="coaches.html">指導者</a>
+        <a href="online-personal.html" aria-current="page">オンライン</a>
+        <a href="results.html">実績</a>
       </div>
+      <a class="nav-cta" href="contact.html">体験・問合せ<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+  </div>
+</header>
 
-      <div class="grid lg:grid-cols-2 gap-10 items-start">
-        <!-- Left: Concept -->
-        <div class="bg-brand-gray/70 border border-white/10 p-6 md:p-8 relative overflow-hidden">
-          <div class="absolute -right-8 -top-10 text-[88px] md:text-[110px] font-display font-black text-white/5 italic">01</div>
+<main id="main">
+  <section class="page-head">
+    <div class="container">
+      <ol class="breadcrumb"><li><a href="index.html">トップ</a></li><li aria-current="page">オンラインパーソナル</li></ol>
+      <p class="page-head__en" aria-hidden="true">Online Personal</p>
+      <h1 class="page-head__title"><span><span class="ib">LINE型</span><span class="ib">オンラインパーソナル</span></span></h1>
+      <p class="page-head__lead">陸上競技の悩みを抱える方<strong>全員</strong>が対象。<br class="br-lg">選手・保護者・マスターズ・学校／クラブ指導者まで、状況に合わせて最適化します。</p>
+    </div>
+  </section>
 
-          <h3 class="text-2xl font-bold mb-4 leading-snug">
-            <span class="text-brand-pink">LINE</span>でやりとり自由。<br>
-            "あなた専用"の改善ルートを作ります。
-          </h3>
+  <section class="section">
+    <div class="container online-grid">
+      <aside class="price-card" aria-label="料金とお申し込み">
+        <p class="price-card__label">月額（税込）</p>
+        <p class="price price--lg"><span class="price__num">11,000</span><span class="price__yen">円</span></p>
+        <ul class="price-card__points">
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>回数無制限（やりとり自由）</li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>返信は原則24時間以内</li>
+          <li><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4.2L19 7"/></svg>事前にZoomでヒアリング</li>
+        </ul>
+        <div class="price-card__actions">
+          <a class="btn btn--line" href="https://lin.ee/0xMJ03O" target="_blank" rel="noopener">LINEで申し込む<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--on-night" href="https://form.run/@happiness-ac--1611570580" target="_blank" rel="noopener">フォームで問い合わせ</a>
+        </div>
+        <p class="price-card__note">※LINEに「オンライン希望」と送ってください。24時間以内に返信します。<br>※事前にZoomで希望をヒアリングし、個別プログラムを作成します。</p>
+      </aside>
 
-          <div class="space-y-4 text-sm text-gray-300 leading-relaxed">
-            <p class="border-l-4 border-brand-pink pl-4">
-              事前に<strong class="text-white">Zoomで希望をヒアリング</strong>し、課題・環境・目標に合わせて<strong class="text-white">個別プログラム</strong>を作成。
-              その後はLINEで日々のやりとりを行い、改善を積み上げます。
-            </p>
+      <div class="online-main">
+        <p class="eyebrow">Concept</p>
+        <h2 class="section-title">LINEでやりとり自由。<br>“あなた専用”の改善ルートを作ります。</h2>
+        <p class="lead-block" style="margin-top:28px">事前に<span class="mark">Zoomで希望をヒアリング</span>し、課題・環境・目標に合わせて<span class="mark">個別プログラム</span>を作成。その後はLINEで日々のやりとりを行い、改善を積み上げます。</p>
 
-            <div class="grid md:grid-cols-2 gap-3">
-              <div class="bg-black/40 border border-white/10 p-4">
-                <div class="text-xs text-brand-pink font-bold mb-1">こんな相談が多い</div>
-                <ul class="text-sm text-gray-300 space-y-1">
-                  <li>・指導者がいない/専門的に見てほしい</li>
-                  <li>・動画を見て改善点を知りたい</li>
-                  <li>・練習メニューの組み立て方が不安</li>
-                  <li>・教え子/子どもを伸ばす方法が知りたい</li>
-                </ul>
-              </div>
-
-              <div class="bg-black/40 border border-white/10 p-4">
-                <div class="text-xs text-brand-pink font-bold mb-1">対応スタイル</div>
-                <ul class="text-sm text-gray-300 space-y-1">
-                  <li>・回数無制限（やりとり自由）</li>
-                  <li>・原則<strong class="text-white">24時間以内</strong>に返信</li>
-                  <li>・動画添削 / メニュー設計 / 指導相談</li>
-                  <li>・状況に応じて優先順位を整理</li>
-                </ul>
-              </div>
-            </div>
+        <div class="duo">
+          <div class="box">
+            <p class="box__title">こんな相談が多い</p>
+            <ul class="check-list">
+              <li>指導者がいない／専門的に見てほしい</li>
+              <li>動画を見て改善点を知りたい</li>
+              <li>練習メニューの組み立て方が不安</li>
+              <li>教え子／子どもを伸ばす方法が知りたい</li>
+            </ul>
           </div>
-
-          <!-- CTA (Updated) -->
-          <div class="mt-6 flex flex-col sm:flex-row gap-3">
-            <a href="https://lin.ee/0xMJ03O" target="_blank"
-               class="btn-glitch w-full sm:w-auto flex-1 bg-[#06c755] text-white px-6 py-4 font-bold rounded-sm hover:bg-white hover:text-[#06c755] transition-colors text-center">
-              LINEで申し込む →
-            </a>
-            <a href="https://form.run/@happiness-ac--1611570580" target="_blank"
-               class="w-full sm:w-auto flex-1 border border-white/20 text-white px-6 py-4 font-bold rounded-sm hover:border-brand-pink hover:text-white transition-colors text-center">
-              フォームで問い合わせ →
-            </a>
+          <div class="box">
+            <p class="box__title">対応スタイル</p>
+            <ul class="check-list">
+              <li>回数無制限（やりとり自由）</li>
+              <li>原則<strong>24時間以内</strong>に返信</li>
+              <li>動画添削／メニュー設計／指導相談</li>
+              <li>状況に応じて優先順位を整理</li>
+            </ul>
           </div>
-
-          <p class="text-xs text-gray-500 mt-3">
-            ※LINEに「オンライン希望」と送ってください。24時間以内に返信します。<br>
-            ※事前にZoomで希望をヒアリングし、個別プログラムを作成します。
-          </p>
         </div>
 
-        <!-- Right: Proof + Price -->
-        <div class="bg-black/40 border border-white/10 p-6 md:p-8 relative overflow-hidden">
-          <div class="absolute -right-8 -top-10 text-[88px] md:text-[110px] font-display font-black text-white/5 italic">02</div>
+        <p class="subhead-en">Results</p>
+        <h3 class="subhead">オンライン指導の実績</h3>
+        <ul class="result-list">
+          <li><small>女子コンバインドB</small><strong>小学5年で県代表</strong></li>
+          <li><small>女子コンバインドB</small><strong>地方大会 優勝</strong></li>
+          <li><small>中学女子ハードル</small><strong>14秒76 → 1ヶ月で 14秒45</strong></li>
+          <li><small>ジャベリックボール投げ</small><strong>半年で 20m → 34m</strong></li>
+        </ul>
 
-          <div class="flex items-end justify-between gap-4 mb-6 border-b border-white/10 pb-4">
-            <div>
-              <div class="text-brand-pink font-bold tracking-widest text-xs">RESULTS</div>
-              <h3 class="text-2xl font-bold mt-1">オンライン指導の実績</h3>
-            </div>
-            <div class="text-right">
-              <div class="text-xs text-gray-400">月額（税込）</div>
-              <div class="font-display text-4xl font-black text-brand-pink leading-none">11,000<span class="text-base text-white/60 font-sans ml-1">円</span></div>
-              <div class="text-xs text-gray-400 mt-1">回数無制限 / 返信 原則24時間以内</div>
-            </div>
-          </div>
-
-          <ul class="space-y-4 text-sm text-gray-300">
-            <li class="bg-brand-gray/60 border border-white/10 p-4">
-              <div class="text-xs text-gray-400">女子コンバインドB</div>
-              <div class="font-bold text-white">小学5年で県代表</div>
-            </li>
-            <li class="bg-brand-gray/60 border border-white/10 p-4">
-              <div class="text-xs text-gray-400">女子コンバインドB</div>
-              <div class="font-bold text-white">地方大会 優勝</div>
-            </li>
-            <li class="bg-brand-gray/60 border border-white/10 p-4">
-              <div class="text-xs text-gray-400">中学女子ハードル</div>
-              <div class="font-bold text-white">14秒76 → 1ヶ月で 14秒45</div>
-            </li>
-            <li class="bg-brand-gray/60 border border-white/10 p-4">
-              <div class="text-xs text-gray-400">ジャベリックボール投げ</div>
-              <div class="font-bold text-white">半年で 20m → 34m</div>
-            </li>
-          </ul>
-
-          <div class="mt-6 bg-white/5 border border-white/10 p-5">
-            <div class="text-xs text-brand-pink font-bold mb-2">WHO IS THIS FOR?</div>
-            <p class="text-sm text-gray-300 leading-relaxed">
-              「今の環境で伸ばしたい」すべての人へ。<br>
-              競技者はもちろん、<strong class="text-white">保護者</strong>・<strong class="text-white">マスターズ</strong>・<strong class="text-white">指導者</strong>も歓迎です。
-            </p>
-          </div>
-
-          <div class="mt-6 flex gap-3">
-            <a href="index.html#join"
-               class="w-full border border-white/20 text-white font-bold py-4 rounded-sm hover:border-brand-pink transition text-center">
-              体験・入会セクションへ ↓
-            </a>
-          </div>
+        <div class="for-box">
+          <p class="box__title">WHO IS THIS FOR?</p>
+          <p style="margin-top:8px">「今の環境で伸ばしたい」すべての人へ。<br>競技者はもちろん、<strong>保護者</strong>・<strong>マスターズ</strong>・<strong>指導者</strong>も歓迎です。</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-brand-black text-gray-600 py-12 border-t border-white/5">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
       <div>
-        <a href="index.html" class="text-3xl font-black font-display italic tracking-tighter text-white block mb-1">
-          HAPPINESS<span class="text-brand-pink">AC</span>
-        </a>
-        <p class="text-xs text-gray-400">神奈川県（秦野・大和）ジュニア陸上クラブ</p>
+        <p class="eyebrow">Club</p>
+        <h2 class="cta-band__title" id="cta-title">競技場での練習に参加したい方は</h2>
+        <p class="cta-band__text">秦野・大和のクラスで体験を受け付けています。</p>
       </div>
-
-      <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-bold">
-        <a href="index.html#about" class="hover:text-white transition-colors">指導軸</a>
-        <a href="classes.html" class="hover:text-white transition-colors">クラス・会費</a>
-        <a href="coaches.html" class="hover:text-white transition-colors">指導者</a>
-        <a href="https://form.run/@happiness-ac--1611570580" target="_blank" class="text-brand-pink hover:text-white transition-colors">お問い合わせ</a>
-      </div>
-
-      <div class="text-xs text-gray-500 border-t border-gray-800 w-full md:w-auto md:border-none pt-4 md:pt-0">
-        &copy; HappinessAC All Rights Reserved.
+      <div class="btn-row">
+        <a class="btn btn--primary" href="contact.html">体験・問い合わせ<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--on-night" href="classes.html">クラス・会費を見る</a>
       </div>
     </div>
-  </footer>
+  </section>
+</main>
 
-  <!-- Mobile Sticky CTA -->
-  <div class="sticky-cta md:hidden px-4 py-3 pb-6 safe-area-bottom">
-    <div class="grid grid-cols-2 gap-3">
-      <a href="https://lin.ee/0xMJ03O" target="_blank"
-         class="bg-[#06c755] text-white font-bold py-3.5 text-center rounded-sm shadow-lg flex items-center justify-center gap-2">
-         LINE相談
-      </a>
-      <a href="https://form.run/@happiness-ac--1611570580" target="_blank"
-         class="bg-brand-pink text-white font-bold py-3.5 text-center rounded-sm shadow-lg flex items-center justify-center gap-2">
-         体験申込 <span class="text-sm">→</span>
-      </a>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><span class="brand__mark">HAPPINESS<b>AC</b></span></a>
+        <p class="footer-brand__text">神奈川県（秦野・大和）ジュニア陸上クラブ</p>
+        <div class="footer-actions">
+          <a class="btn btn--primary btn--sm" href="https://form.run/@happiness-ac--1611570580" target="_blank" rel="noopener">体験・問い合わせフォーム</a>
+          <a class="btn btn--line btn--sm" href="https://lin.ee/0xMJ03O" target="_blank" rel="noopener">LINEで相談</a>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="サイトマップ">
+        <p class="footer-label">Menu</p>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="classes.html">クラス・会費</a></li>
+          <li><a href="coaches.html">指導者</a></li>
+          <li><a href="online-personal.html">オンライン</a></li>
+          <li><a href="results.html">実績</a></li>
+          <li><a href="contact.html">体験・問合せ</a></li>
+        </ul>
+      </nav>
+      <div class="footer-sns">
+        <p class="footer-label">Follow</p>
+        <ul>
+          <li><a href="https://www.youtube.com/@virds2761" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.5 9.5v5l4.3-2.5-4.3-2.5Z"/></svg>古藤監督のYouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <span>&copy; HappinessAC All Rights Reserved.</span>
+      <a href="#top">ページの先頭へ</a>
     </div>
   </div>
+</footer>
 
-  <!-- Common Footer -->
-  <footer class="site-footer">
-    <nav class="footer-nav">
-      <a href="index.html">トップ</a>
-      <a href="classes.html">クラス・会費</a>
-      <a href="coaches.html">指導者</a>
-      <a href="online-personal.html" class="active">オンライン</a>
-      <a href="results.html">実績</a>
-      <a href="contact.html">体験・問合せ</a>
-    </nav>
+<!-- スマホ用：画面の下に固定するタブ（どこまでスクロールしても各ページへ移動できる） -->
+<nav class="dock" aria-label="ページ切り替え">
+  <ul class="dock__list">
+    <li><a class="dock__link" href="index.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></svg></span>トップ</a></li>
+    <li><a class="dock__link" href="classes.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>クラス・会費</a></li>
+    <li><a class="dock__link" href="coaches.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.2-3.8 4.2-5.8 7.5-5.8s6.3 2 7.5 5.8"/></svg></span>指導者</a></li>
+    <li><a class="dock__link" href="online-personal.html" aria-current="page"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5h15v10.5H10l-5.5 4v-14.5Z"/><path d="M8.5 10.8h.01M12 10.8h.01M15.5 10.8h.01"/></svg></span>オンライン</a></li>
+    <li><a class="dock__link" href="results.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.5h8V10a4 4 0 0 1-8 0V4.5Z"/><path d="M16 6h3.5v1.2A3.8 3.8 0 0 1 15.7 11M8 6H4.5v1.2A3.8 3.8 0 0 0 8.3 11"/><path d="M12 14v3.5M8.5 20h7"/></svg></span>実績</a></li>
+    <li><a class="dock__link dock__link--cta" href="contact.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5 3.5 10.6l6.6 2.6 2.7 6.8 7.7-16.5Z"/><path d="M10.1 13.2l4.4-4.4"/></svg></span>体験・問合せ</a></li>
+  </ul>
+</nav>
 
-    <a class="back-to-top" href="index.html">← トップページへ戻る</a>
-    <div class="copyright">© HappinessAC All Rights Reserved.</div>
-  </footer>
-
+<script src="assets/site.js?v=20261018" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>

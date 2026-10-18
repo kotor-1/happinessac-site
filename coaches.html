@@ -1,343 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>指導者 | HappinessAC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>指導者 | HappinessAC</title>
+<meta name="description" content="HappinessACの指導者紹介。代表 古藤涼平、副代表 濟藤未夢、副代表・相談役 上出恵史、コーチ 近藤俊介、学生コーチ 花檀択洋。">
+<meta name="theme-color" content="#F7F4EE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HappinessAC">
+<meta property="og:title" content="指導者 | HappinessAC">
+<meta property="og:description" content="HappinessACの指導者紹介。代表 古藤涼平、副代表 濟藤未夢、副代表・相談役 上出恵史、コーチ 近藤俊介、学生コーチ 花檀択洋。">
+<meta property="og:url" content="https://happinessac.com/coaches.html">
+<meta property="og:image" content="https://happinessac.com/images/taiken-group.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&amp;family=Manrope:wght@500;600;700;800&amp;family=Shippori+Mincho+B1:wght@600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css?v=20261018">
+<script>document.documentElement.classList.add('js');</script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PE6EF6C0FT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              pink: '#ff2aa1',
-              black: '#0b0b0f',
-              dark:  '#121216',
-              gray:  '#1f1f2e'
-            }
-          },
-          fontFamily: {
-            sans: ['"Noto Sans JP"', 'sans-serif'],
-            display: ['"Oswald"', 'sans-serif'],
-          },
-          backgroundImage: {
-            noise: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    body { background:#0b0b0f; color:#fff; overflow-x:hidden; }
-    .speed-lines{
-      position:absolute; inset:0;
-      background:repeating-linear-gradient(90deg,transparent 0,transparent 90px,rgba(255,42,161,.03) 90px,rgba(255,42,161,.03) 91px);
-      pointer-events:none; z-index:0;
-      animation:speedMove 14s linear infinite;
-    }
-    @keyframes speedMove { from{transform:translateX(0)} to{transform:translateX(-180px)} }
-
-    .btn-glitch{ position:relative; overflow:hidden; transition:.25s; }
-    .btn-glitch::before{
-      content:''; position:absolute; inset:0; left:-120%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
-      transition:.5s;
-    }
-    .btn-glitch:hover::before{ left:120%; }
-
-    /* custom scrollbar */
-    ::-webkit-scrollbar{ width:8px; }
-    ::-webkit-scrollbar-track{ background:#0b0b0f; }
-    ::-webkit-scrollbar-thumb{ background:#ff2aa1; border-radius:4px; }
-
-    /* Mobile sticky CTA */
-    .sticky-cta{
-      position:fixed; left:0; bottom:0; width:100%;
-      z-index:60;
-      box-shadow:0 -6px 18px rgba(0,0,0,.35);
-      background:rgba(11,11,15,.95);
-      backdrop-filter: blur(10px);
-      border-top:1px solid rgba(255,42,161,.2);
-    }
-
-    /* Coach image: Safariでもタップでカラー化 */
-    .coach-card img{
-      filter: grayscale(1);
-      transition: filter .25s ease, transform .25s ease;
-    }
-    .coach-card:hover img,
-    .coach-card:active img,
-    .coach-card:focus-within img { filter: grayscale(0); } /* PC用 + タップ対応 */
-
-    /* Common Header/Footer Styles */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      padding: 12px 16px;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .site-header .brand {
-      margin-bottom: 8px;
-    }
-
-    .brand-link {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      font-size: 1.25rem;
-    }
-
-    .site-nav, .footer-nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .site-nav a, .footer-nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-
-    .site-nav a:hover, .footer-nav a:hover {
-      color: #ff2aa1;
-    }
-
-    /* 現在地メニュー表示 */
-    .site-nav a.active, .footer-nav a.active {
-      color: #ff2f92;
-      font-weight: 700;
-      border-bottom: 2px solid #ff2f92;
-    }
-
-    .site-footer {
-      margin-top: 40px;
-      padding: 18px 16px;
-      background: #0b0b10;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-    }
-
-    .back-to-top {
-      display: block;
-      margin: 18px auto 8px;
-      text-align: center;
-      color: #ff2aa1;
-      font-weight: 800;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .back-to-top:hover {
-      color: #fff;
-    }
-
-    .copyright {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.75rem;
-      margin-top: 8px;
-    }
-
-    @media (min-width: 768px) {
-      .site-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 24px;
-      }
-
-      .site-header .brand {
-        margin-bottom: 0;
-      }
-
-      .site-nav {
-        gap: 20px;
-      }
-
-      .site-nav a, .footer-nav a {
-        font-size: 0.9375rem;
-      }
-    }
-
-    /* ===== スマホ時だけメニュー固定 ===== */
-    @media (max-width: 768px) {
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 9999;
-        backdrop-filter: blur(10px);
-        background: rgba(0,0,0,0.85);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-
-      body {
-        scroll-padding-top: 70px;
-      }
-    }
-  </style>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE6EF6C0FT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-PE6EF6C0FT');
-  </script>
+  gtag('config', 'G-PE6EF6C0FT');
+</script>
 </head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
 
-<body class="font-sans antialiased selection:bg-brand-pink selection:text-white pb-24 md:pb-0">
-
-  <!-- Global noise -->
-  <div class="fixed inset-0 bg-noise pointer-events-none z-50 mix-blend-overlay"></div>
-
-  <!-- Common Header -->
-  <header class="site-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">HAPPINESS<span style="color: #ff2aa1;">AC</span></a>
-    </div>
-
-    <nav class="site-nav">
-      <a href="index.html">トップ</a>
-      <a href="classes.html">クラス・会費</a>
-      <a href="coaches.html" class="active">指導者</a>
-      <a href="online-personal.html">オンライン</a>
-      <a href="results.html">実績</a>
-      <a href="contact.html">体験・問合せ</a>
-    </nav>
-  </header>
-
-  <!-- COACHES -->
-  <section id="coaches" class="py-24 bg-brand-black min-h-screen pt-20 md:pt-32">
-    <div class="container mx-auto px-4">
-      <div class="mb-12 text-right">
-        <span class="text-brand-pink font-display font-bold text-sm tracking-widest block mb-1">COACHES</span>
-        <h2 class="text-4xl md:text-5xl font-black">指導者</h2>
+<!-- ヘッダー（PCでは上部に固定し、タブで各ページへ移動） -->
+<header class="site-header" id="top" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">HAPPINESS<b>AC</b></span>
+      <span class="brand__sub">神奈川・秦野／大和 ジュニア陸上クラブ</span>
+    </a>
+    <nav class="global-nav" aria-label="メインメニュー">
+      <div class="tabs-nav">
+        <a href="index.html">トップ</a>
+        <a href="classes.html">クラス・会費</a>
+        <a href="coaches.html" aria-current="page">指導者</a>
+        <a href="online-personal.html">オンライン</a>
+        <a href="results.html">実績</a>
       </div>
+      <a class="nav-cta" href="contact.html">体験・問合せ<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+  </div>
+</header>
 
-      <div class="grid md:grid-cols-3 gap-8">
-        <!-- Coach 1 -->
-        <div class="group coach-card">
-          <div class="h-72 bg-gray-800 relative overflow-hidden mb-5 transition duration-500 border-b-4 border-brand-pink">
-            <img src="images/koto-ryohei.jpg?v=20260102" alt="古藤 涼平" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-            <div class="absolute bottom-4 left-4">
-              <p class="text-brand-pink font-bold text-xs mb-1 tracking-wider">REPRESENTATIVE</p>
-              <h3 class="text-2xl font-bold text-white">古藤 涼平</h3>
-            </div>
-          </div>
-          <div class="text-sm text-gray-400 leading-relaxed pl-2 border-l border-gray-700">
-            <strong>代表 / JAAFジュニアコーチ</strong><br>
-            毎年全国大会に選手を輩出。基礎から実戦まで、勝てる理論を指導します。
-          </div>
-        </div>
+<main id="main">
+  <section class="page-head">
+    <div class="container">
+      <ol class="breadcrumb"><li><a href="index.html">トップ</a></li><li aria-current="page">指導者</li></ol>
+      <p class="page-head__en" aria-hidden="true">Coaches</p>
+      <h1 class="page-head__title">指導者</h1>
+      <p class="page-head__lead">HappinessACで指導するコーチを紹介します。</p>
+    </div>
+  </section>
 
-        <!-- Coach 2 -->
-        <div class="group coach-card">
-          <div class="h-72 bg-gray-800 relative overflow-hidden mb-5 transition duration-500 border-b-4 border-white">
-            <img src="images/saitou-miyu.jpg?v=20260102" alt="濟藤 未夢" class="absolute inset-0 w-full h-full object-cover" style="object-position: 50% 30%;">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-            <div class="absolute bottom-4 left-4">
-              <p class="text-white font-bold text-xs mb-1 tracking-wider">VICE REPRESENTATIVE</p>
-              <h3 class="text-2xl font-bold text-white">濟藤 未夢</h3>
-            </div>
-          </div>
-          <div class="text-sm text-gray-400 leading-relaxed pl-2 border-l border-gray-700">
-            <strong>副代表 / JAAFジュニアコーチ</strong><br>
-             現役ハードル選手。VIRDS陸上アカデミー初の全国大会出場選手を育成。
-          </div>
-        </div>
+  <section class="section" aria-labelledby="leaders-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Leadership</p>
+        <h2 class="section-title" id="leaders-title">代表・副代表</h2>
+      </div>
+      <div class="coach-grid">
+        <article class="coach" id="koto" data-reveal>
+          <p class="coach__role">REPRESENTATIVE</p>
+          <h3 class="coach__name">古藤 涼平</h3>
+          <p class="coach__title">代表／JAAFジュニアコーチ</p>
+          <p class="coach__text">毎年全国大会に選手を輩出。基礎から実戦まで、勝てる理論を指導します。</p>
+          <a class="text-link coach__link" href="https://www.youtube.com/@virds2761" target="_blank" rel="noopener">古藤監督のYouTube<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a>
+        </article>
 
-        <!-- Coach 3 -->
-        <div class="group coach-card">
-          <div class="h-72 bg-gray-800 relative overflow-hidden mb-5 transition duration-500 border-b-4 border-gray-600">
-            <img src="images/uedashi-keishi.jpg?v=20260102" alt="上出 恵史" class="absolute inset-0 w-full h-full object-cover">
-            <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-90"></div>
-            <div class="absolute bottom-4 left-4">
-              <p class="text-gray-400 font-bold text-xs mb-1 tracking-wider">ADVISOR</p>
-              <h3 class="text-2xl font-bold text-white">上出 恵史</h3>
-            </div>
-          </div>
-          <div class="text-sm text-gray-400 leading-relaxed pl-2 border-l border-gray-700">
-            <strong>副代表・相談役</strong><br>
-            スプリントドリル考案者。石川県から年数回指導に訪れるスペシャリスト。
-          </div>
-        </div>
+        <article class="coach" id="saito" data-reveal>
+          <p class="coach__role">VICE REPRESENTATIVE</p>
+          <h3 class="coach__name">濟藤 未夢</h3>
+          <p class="coach__title">副代表／JAAFジュニアコーチ</p>
+          <ul class="coach__tags" aria-label="競技"><li class="is-active">現役選手</li><li>ハードル</li></ul>
+          <p class="coach__text">現役ハードル選手。VIRDS陸上アカデミー初の全国大会出場選手を育成。</p>
+        </article>
+
+        <article class="coach" id="uedashi" data-reveal>
+          <p class="coach__role">ADVISOR</p>
+          <h3 class="coach__name">上出 恵史</h3>
+          <p class="coach__title">副代表・相談役</p>
+          <p class="coach__text">スプリントドリル考案者。石川県から年数回指導に訪れるスペシャリスト。</p>
+        </article>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-brand-black text-gray-600 py-12 border-t border-white/5">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-      <div>
-        <a href="index.html" class="text-3xl font-black font-display italic tracking-tighter text-white block mb-1">
-          HAPPINESS<span class="text-brand-pink">AC</span>
-        </a>
-        <p class="text-xs text-gray-400">神奈川県（秦野・大和）ジュニア陸上クラブ</p>
+  <section class="section section--alt" aria-labelledby="staff-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Coaches</p>
+        <h2 class="section-title" id="staff-title">コーチ</h2>
       </div>
+      <div class="coach-grid">
+        <article class="coach" id="kondo" data-reveal>
+          <p class="coach__role">COACH</p>
+          <h3 class="coach__name">近藤 俊介</h3>
+          <p class="coach__title">土曜 大和クラス担当</p>
+          <ul class="coach__tags" aria-label="競技"><li class="is-active">現役選手</li><li>中距離</li></ul>
+          <p class="coach__text">中距離の現役選手。土曜の大和クラスを担当しています。</p>
+          <a class="text-link coach__link" href="classes.html#yamato">大和クラスの時間・会費<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </article>
 
-      <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-bold">
-        <a href="index.html#about" class="hover:text-white transition-colors">指導軸</a>
-        <a href="classes.html" class="hover:text-white transition-colors">クラス・会費</a>
-        <a href="coaches.html" class="hover:text-white transition-colors">指導者</a>
-        <a href="https://form.run/@happiness-ac--1611570580" target="_blank" class="text-brand-pink hover:text-white transition-colors">お問い合わせ</a>
-      </div>
-
-      <div class="text-xs text-gray-500 border-t border-gray-800 w-full md:w-auto md:border-none pt-4 md:pt-0">
-        &copy; HappinessAC All Rights Reserved.
+        <article class="coach" id="kadan" data-reveal>
+          <p class="coach__role">STUDENT COACH</p>
+          <h3 class="coach__name">花檀 択洋</h3>
+          <p class="coach__title">学生コーチ</p>
+          <ul class="coach__tags" aria-label="競技"><li>長距離</li></ul>
+          <p class="coach__text">長距離選手。学生コーチとして指導しています。</p>
+        </article>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <!-- Mobile Sticky CTA -->
-  <div class="sticky-cta md:hidden px-4 py-3 pb-6 safe-area-bottom">
-    <div class="grid grid-cols-2 gap-3">
-      <a href="https://lin.ee/0xMJ03O" target="_blank"
-         class="bg-[#06c755] text-white font-bold py-3.5 text-center rounded-sm shadow-lg flex items-center justify-center gap-2">
-         LINE相談
-      </a>
-      <a href="https://form.run/@happiness-ac--1611570580" target="_blank"
-         class="bg-brand-pink text-white font-bold py-3.5 text-center rounded-sm shadow-lg flex items-center justify-center gap-2">
-         体験申込 <span class="text-sm">→</span>
-      </a>
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <p class="eyebrow">Trial</p>
+        <h2 class="cta-band__title" id="cta-title">指導を体験してみませんか。</h2>
+        <p class="cta-band__text">無理な勧誘は一切いたしません。</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="contact.html">体験・問い合わせ<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--on-night" href="classes.html">クラス・会費を見る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><span class="brand__mark">HAPPINESS<b>AC</b></span></a>
+        <p class="footer-brand__text">神奈川県（秦野・大和）ジュニア陸上クラブ</p>
+        <div class="footer-actions">
+          <a class="btn btn--primary btn--sm" href="https://form.run/@happiness-ac--1611570580" target="_blank" rel="noopener">体験・問い合わせフォーム</a>
+          <a class="btn btn--line btn--sm" href="https://lin.ee/0xMJ03O" target="_blank" rel="noopener">LINEで相談</a>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="サイトマップ">
+        <p class="footer-label">Menu</p>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="classes.html">クラス・会費</a></li>
+          <li><a href="coaches.html">指導者</a></li>
+          <li><a href="online-personal.html">オンライン</a></li>
+          <li><a href="results.html">実績</a></li>
+          <li><a href="contact.html">体験・問合せ</a></li>
+        </ul>
+      </nav>
+      <div class="footer-sns">
+        <p class="footer-label">Follow</p>
+        <ul>
+          <li><a href="https://www.youtube.com/@virds2761" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.5 9.5v5l4.3-2.5-4.3-2.5Z"/></svg>古藤監督のYouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <span>&copy; HappinessAC All Rights Reserved.</span>
+      <a href="#top">ページの先頭へ</a>
     </div>
   </div>
+</footer>
 
+<!-- スマホ用：画面の下に固定するタブ（どこまでスクロールしても各ページへ移動できる） -->
+<nav class="dock" aria-label="ページ切り替え">
+  <ul class="dock__list">
+    <li><a class="dock__link" href="index.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></svg></span>トップ</a></li>
+    <li><a class="dock__link" href="classes.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>クラス・会費</a></li>
+    <li><a class="dock__link" href="coaches.html" aria-current="page"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.2-3.8 4.2-5.8 7.5-5.8s6.3 2 7.5 5.8"/></svg></span>指導者</a></li>
+    <li><a class="dock__link" href="online-personal.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5h15v10.5H10l-5.5 4v-14.5Z"/><path d="M8.5 10.8h.01M12 10.8h.01M15.5 10.8h.01"/></svg></span>オンライン</a></li>
+    <li><a class="dock__link" href="results.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.5h8V10a4 4 0 0 1-8 0V4.5Z"/><path d="M16 6h3.5v1.2A3.8 3.8 0 0 1 15.7 11M8 6H4.5v1.2A3.8 3.8 0 0 0 8.3 11"/><path d="M12 14v3.5M8.5 20h7"/></svg></span>実績</a></li>
+    <li><a class="dock__link dock__link--cta" href="contact.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5 3.5 10.6l6.6 2.6 2.7 6.8 7.7-16.5Z"/><path d="M10.1 13.2l4.4-4.4"/></svg></span>体験・問合せ</a></li>
+  </ul>
+</nav>
 
-  <!-- Common Footer -->
-  <footer class="site-footer">
-    <nav class="footer-nav">
-      <a href="index.html">トップ</a>
-      <a href="classes.html">クラス・会費</a>
-      <a href="coaches.html" class="active">指導者</a>
-      <a href="online-personal.html">オンライン</a>
-      <a href="results.html">実績</a>
-      <a href="contact.html">体験・問合せ</a>
-    </nav>
-
-    <a class="back-to-top" href="index.html">← トップページへ戻る</a>
-    <div class="copyright">© HappinessAC All Rights Reserved.</div>
-  </footer>
-
+<script src="assets/site.js?v=20261018" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>

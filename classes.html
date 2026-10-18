@@ -1,583 +1,419 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>クラス・会費 | HappinessAC</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>クラス・会費 | HappinessAC</title>
+<meta name="description" content="HappinessACのクラスと会費。秦野・大和エリアの曜日・時間・会費をエリア別にまとめています。金曜日の平塚クラスは2027年春ごろ開講予定です。">
+<meta name="theme-color" content="#F7F4EE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="HappinessAC">
+<meta property="og:title" content="クラス・会費 | HappinessAC">
+<meta property="og:description" content="HappinessACのクラスと会費。秦野・大和エリアの曜日・時間・会費をエリア別にまとめています。金曜日の平塚クラスは2027年春ごろ開講予定です。">
+<meta property="og:url" content="https://happinessac.com/classes.html">
+<meta property="og:image" content="https://happinessac.com/images/taiken-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&amp;family=Manrope:wght@500;600;700;800&amp;family=Shippori+Mincho+B1:wght@600;700&amp;family=Zen+Kaku+Gothic+New:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="assets/site.css?v=20261018">
+<script>document.documentElement.classList.add('js');</script>
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PE6EF6C0FT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              pink: '#ff2aa1',
-              black: '#0b0b0f',
-              dark:  '#121216',
-              gray:  '#1f1f2e'
-            }
-          },
-          fontFamily: {
-            sans: ['"Noto Sans JP"', 'sans-serif'],
-            display: ['"Oswald"', 'sans-serif'],
-          },
-          backgroundImage: {
-            noise: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E\")",
-          }
-        }
-      }
-    }
-  </script>
-
-  <style>
-    body { background:#0b0b0f; color:#fff; overflow-x:hidden; }
-    .clip-diagonal-rev{ clip-path:polygon(0 10%,100% 0,100% 100%,0 100%); }
-    .btn-glitch{ position:relative; overflow:hidden; transition:.25s; }
-    .btn-glitch::before{
-      content:''; position:absolute; inset:0; left:-120%;
-      background:linear-gradient(90deg,transparent,rgba(255,255,255,.22),transparent);
-      transition:.5s;
-    }
-    .btn-glitch:hover::before{ left:120%; }
-    ::-webkit-scrollbar{ width:8px; }
-    ::-webkit-scrollbar-track{ background:#0b0b0f; }
-    ::-webkit-scrollbar-thumb{ background:#ff2aa1; border-radius:4px; }
-    .sticky-cta{
-      position:fixed; left:0; bottom:0; width:100%;
-      z-index:60;
-      box-shadow:0 -6px 18px rgba(0,0,0,.35);
-      background:rgba(11,11,15,.95);
-      backdrop-filter: blur(10px);
-      border-top:1px solid rgba(255,42,161,.2);
-    }
-
-    /* Common Header/Footer Styles */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      padding: 12px 16px;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .site-header .brand {
-      margin-bottom: 8px;
-    }
-
-    .brand-link {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-      font-size: 1.25rem;
-    }
-
-    .site-nav, .footer-nav {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    .site-nav a, .footer-nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.875rem;
-      transition: color 0.2s;
-    }
-
-    .site-nav a:hover, .footer-nav a:hover {
-      color: #ff2aa1;
-    }
-
-    /* 現在地メニュー表示 */
-    .site-nav a.active, .footer-nav a.active {
-      color: #ff2f92;
-      font-weight: 700;
-      border-bottom: 2px solid #ff2f92;
-    }
-
-    .site-footer {
-      margin-top: 40px;
-      padding: 18px 16px;
-      background: #0b0b10;
-      border-top: 1px solid rgba(255,255,255,0.1);
-      text-align: center;
-    }
-
-    .back-to-top {
-      display: block;
-      margin: 18px auto 8px;
-      text-align: center;
-      color: #ff2aa1;
-      font-weight: 800;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .back-to-top:hover {
-      color: #fff;
-    }
-
-    .copyright {
-      color: rgba(255,255,255,0.6);
-      font-size: 0.75rem;
-      margin-top: 8px;
-    }
-
-    @media (min-width: 768px) {
-      .site-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 12px 24px;
-      }
-
-      .site-header .brand {
-        margin-bottom: 0;
-      }
-
-      .site-nav {
-        gap: 20px;
-      }
-
-      .site-nav a, .footer-nav a {
-        font-size: 0.9375rem;
-      }
-    }
-
-    /* ===== スマホ時だけメニュー固定 ===== */
-    @media (max-width: 768px) {
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 9999;
-        backdrop-filter: blur(10px);
-        background: rgba(0,0,0,0.85);
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-      }
-
-      body {
-        scroll-padding-top: 70px;
-      }
-    }
-  </style>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PE6EF6C0FT"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-PE6EF6C0FT');
-  </script>
+  gtag('config', 'G-PE6EF6C0FT');
+</script>
 </head>
+<body>
+<a class="skip-link" href="#main">本文へスキップ</a>
 
-<body class="font-sans antialiased selection:bg-brand-pink selection:text-white pb-24 md:pb-0">
-
-  <!-- Global noise -->
-  <div class="fixed inset-0 bg-noise pointer-events-none z-50 mix-blend-overlay"></div>
-
-  <!-- Common Header -->
-  <header class="site-header">
-    <div class="brand">
-      <a href="index.html" class="brand-link">HAPPINESS<span style="color: #ff2aa1;">AC</span></a>
-    </div>
-
-    <nav class="site-nav">
-      <a href="index.html">トップ</a>
-      <a href="classes.html" class="active">クラス・会費</a>
-      <a href="coaches.html">指導者</a>
-      <a href="online-personal.html">オンライン</a>
-      <a href="results.html">実績</a>
-      <a href="contact.html">体験・問合せ</a>
+<!-- ヘッダー（PCでは上部に固定し、タブで各ページへ移動） -->
+<header class="site-header" id="top" data-header>
+  <div class="container site-header__inner">
+    <a class="brand" href="index.html">
+      <span class="brand__mark">HAPPINESS<b>AC</b></span>
+      <span class="brand__sub">神奈川・秦野／大和 ジュニア陸上クラブ</span>
+    </a>
+    <nav class="global-nav" aria-label="メインメニュー">
+      <div class="tabs-nav">
+        <a href="index.html">トップ</a>
+        <a href="classes.html" aria-current="page">クラス・会費</a>
+        <a href="coaches.html">指導者</a>
+        <a href="online-personal.html">オンライン</a>
+        <a href="results.html">実績</a>
+      </div>
+      <a class="nav-cta" href="contact.html">体験・問合せ<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- CLASSES -->
-  <section id="classes" class="py-24 bg-brand-black pt-32">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row md:items-end gap-4 mb-12 border-b border-white/10 pb-4">
-        <div>
-          <span class="text-brand-pink font-display font-bold text-sm tracking-widest block mb-1">CLASSES & FEES</span>
-          <h1 class="text-4xl md:text-5xl font-black">クラス・会費</h1>
+<main id="main">
+  <section class="page-head">
+    <div class="container">
+      <ol class="breadcrumb"><li><a href="index.html">トップ</a></li><li aria-current="page">クラス・会費</li></ol>
+      <p class="page-head__en" aria-hidden="true">Classes &amp; Fees</p>
+      <h1 class="page-head__title">クラス・会費</h1>
+      <p class="page-head__lead">エリアのタブを切り替えると、各クラスの曜日・時間・会費を確認できます。<span class="ib">表示はすべて税込価格です。</span></p>
+
+      <div class="facts" id="fees">
+        <div class="fact fact--key">
+          <p class="fact__label">入会金・年会費（全クラス共通）</p>
+          <p class="fact__value"><span class="price price--rose"><span class="price__num">7,700</span><span class="price__yen">円</span><span class="price__unit">／年</span></span></p>
+          <p class="fact__note">スポーツ安全保険料を含みます。年度途中の入会は月割で計算します。</p>
         </div>
-      </div>
-
-      <div class="grid lg:grid-cols-2 gap-12">
-        <!-- HADANO -->
-        <div>
-          <div class="flex items-center gap-4 mb-6">
-            <div class="bg-brand-pink text-black font-display font-bold text-2xl px-4 py-1 -skew-x-12 shadow-[4px_4px_0_rgba(255,255,255,0.2)]">HADANO</div>
-            <h3 class="text-2xl font-bold">秦野エリア</h3>
-          </div>
-          <p class="text-sm text-gray-400 mb-3"><i class="fas fa-map-marker-alt"></i> 秦野カルチャーパーク陸上競技場</p>
-
-          <div class="bg-brand-gray rounded-sm overflow-hidden border border-white/10">
-            <div class="divide-y divide-white/5">
-
-              <!-- Class Item -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex justify-between items-start mb-2">
-                  <h4 class="text-lg font-bold text-white">総合クラス</h4>
-                  <span class="text-xs text-brand-pink border border-brand-pink px-2 py-0.5 rounded">小学4年生以下</span>
-                </div>
-                <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink">
-                   <div class="flex justify-between text-sm">
-                     <span class="font-bold text-gray-300">土曜日</span>
-                     <span class="font-display font-bold text-white text-lg">16:30 – 17:45</span>
-                   </div>
-                </div>
-              </div>
-
-              <!-- Class Item -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex justify-between items-start mb-2">
-                  <h4 class="text-lg font-bold text-white">通常クラス</h4>
-                  <span class="text-xs text-brand-pink border border-brand-pink px-2 py-0.5 rounded">小学生のみ</span>
-                </div>
-                <div class="space-y-2">
-                  <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink flex justify-between items-center">
-                     <span class="font-bold text-gray-300 text-sm">火・水</span>
-                     <span class="font-display font-bold text-white text-lg">17:30 – 19:00</span>
-                  </div>
-                  <div class="bg-black/40 p-3 rounded border-l-2 border-gray-500 flex justify-between items-center">
-                     <span class="font-bold text-gray-300 text-sm">木・土</span>
-                     <span class="font-display font-bold text-white text-lg">17:00 – 18:30</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Class Item -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex justify-between items-start mb-2">
-                  <h4 class="text-lg font-bold text-white">球技特化クラス</h4>
-                  <span class="text-xs text-blue-300 border border-blue-300 px-2 py-0.5 rounded">小学生のみ</span>
-                </div>
-                <div class="bg-black/40 p-3 rounded border-l-2 border-blue-300">
-                   <div class="flex justify-between text-sm">
-                     <span class="font-bold text-gray-300">火曜日</span>
-                     <span class="font-display font-bold text-white text-lg">17:00 – 18:00</span>
-                   </div>
-                </div>
-              </div>
-
-              <!-- Class Item (Detailed) -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex justify-between items-start mb-2">
-                  <h4 class="text-lg font-bold text-white">小学生アスリートクラス</h4>
-                  <span class="text-xs text-brand-pink border border-brand-pink px-2 py-0.5 rounded">競技志向</span>
-                </div>
-                <div class="space-y-2">
-                  <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink flex justify-between items-center">
-                     <span class="font-bold text-gray-300 text-sm">火・水</span>
-                     <span class="font-display font-bold text-white text-lg">17:30 – 19:45</span>
-                  </div>
-                  <div class="bg-black/40 p-3 rounded border-l-2 border-gray-500 flex justify-between items-center">
-                     <span class="font-bold text-gray-300 text-sm">木曜日</span>
-                     <span class="font-display font-bold text-white text-lg">17:00 – 20:00</span>
-                  </div>
-                  <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink flex justify-between items-center">
-                     <span class="font-bold text-gray-300 text-sm">土曜日</span>
-                     <span class="font-display font-bold text-white text-lg">17:00 – 20:00</span>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Class Item (Detailed) -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex justify-between items-start mb-2">
-                  <h4 class="text-lg font-bold text-white">中高生クラス</h4>
-                  <span class="text-xs text-brand-pink border border-brand-pink px-2 py-0.5 rounded">部活併用可</span>
-                </div>
-                <div class="space-y-2">
-                  <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink flex justify-between items-center">
-                     <span class="font-bold text-gray-300 text-sm">火・水</span>
-                     <span class="font-display font-bold text-white text-lg">17:30 – 19:45</span>
-                  </div>
-                  <div class="bg-black/40 p-3 rounded border-l-2 border-gray-500 flex justify-between items-center">
-                     <span class="font-bold text-gray-300 text-sm">木曜日</span>
-                     <span class="font-display font-bold text-white text-lg">17:00 – 20:00</span>
-                  </div>
-                  <div class="bg-black/40 p-3 rounded border-l-2 border-brand-pink flex justify-between items-center">
-                     <span class="font-bold text-gray-300 text-sm">土曜日</span>
-                     <span class="font-display font-bold text-white text-lg">17:00 – 20:00</span>
-                  </div>
-                </div>
-                <p class="mt-3 text-xs text-gray-400 leading-relaxed">
-                  ※大学生・実業団の方はお問い合わせください。
-                </p>
-              </div>
-
-            </div>
-          </div>
+        <div class="fact">
+          <p class="fact__label">お支払い方法</p>
+          <p class="fact__value">Square<span class="ib">（オンライン決済／タッチ決済）</span></p>
+          <p class="fact__note">その他のお支払い方法はご相談ください。</p>
         </div>
-
-        <!-- YAMATO -->
-        <div>
-          <div class="flex items-center gap-4 mb-6">
-            <div class="bg-white text-black font-display font-bold text-2xl px-4 py-1 -skew-x-12 shadow-[4px_4px_0_rgba(255,42,161,1)]">YAMATO</div>
-            <h3 class="text-2xl font-bold">大和スポーツセンター陸上競技場</h3>
-          </div>
-
-          <div class="bg-brand-gray rounded-sm overflow-hidden border border-white/10">
-            <div class="bg-black/30 px-6 py-3 border-b border-white/10">
-              <p class="text-sm text-gray-300 font-bold">土曜・日曜開催</p>
-              <p class="text-xs text-gray-400 mt-2 leading-relaxed">
-                ※土曜 17:00–18:00 は「小学生クラス」と「小学生アスリート・中学生クラス」が合同練習を行います
-              </p>
-            </div>
-
-            <div class="divide-y divide-white/10">
-
-              <!-- SAT: Elementary -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                  <div>
-                    <span class="text-xs text-white font-bold border border-white px-2 py-0.5 rounded-full">土曜</span>
-                    <h4 class="text-lg font-bold mt-1 text-white">小学生クラス</h4>
-                    <p class="text-xs text-gray-400 mt-1">※17:00–18:00 は合同練習</p>
-                    <p class="text-xs text-brand-pink font-bold mt-1">※振替は日曜の大和クラスにて実施</p>
-                  </div>
-                  <div class="text-right md:text-left">
-                    <div class="font-display text-xl font-bold text-white">17:00–18:00</div>
-                    <div class="text-sm text-brand-pink font-bold mt-1">月 5,500円</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SAT: Athlete + JHS -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                  <div>
-                    <span class="text-xs text-white font-bold border border-white px-2 py-0.5 rounded-full">土曜</span>
-                    <h4 class="text-lg font-bold mt-1 text-white">小学生アスリート・中学生クラス</h4>
-                    <p class="text-xs text-gray-400 mt-1">※17:00–18:00 は合同練習</p>
-                    <p class="text-xs text-brand-pink font-bold mt-1">※振替は日曜の大和クラスにて実施</p>
-                  </div>
-                  <div class="text-right md:text-left">
-                    <div class="font-display text-xl font-bold text-white">17:00–19:00</div>
-                    <div class="text-sm text-brand-pink font-bold mt-1">月 7,700円</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SUN: Specialized -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                  <div>
-                    <span class="text-xs text-white font-bold border border-white px-2 py-0.5 rounded-full">日曜</span>
-                    <h4 class="text-lg font-bold mt-1 text-white">小学生クラス</h4>
-                  </div>
-                  <div class="text-right md:text-left">
-                    <div class="font-display text-xl font-bold text-white">17:30–19:00</div>
-                    <div class="text-sm text-brand-pink font-bold mt-1">1回 1,650円</div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- SUN: Athlete -->
-              <div class="p-5 hover:bg-white/5 transition">
-                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                  <div>
-                    <span class="text-xs text-white font-bold border border-white px-2 py-0.5 rounded-full">日曜</span>
-                    <h4 class="text-lg font-bold mt-1 text-white">小中学生アスリートクラス</h4>
-                  </div>
-                  <div class="text-right md:text-left">
-                    <div class="font-display text-xl font-bold text-white">17:30–19:30</div>
-                    <div class="text-sm text-brand-pink font-bold mt-1">1回 2,200円</div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="mt-8 bg-brand-pink/10 p-6 border border-brand-pink/30 rounded-sm">
-            <div class="text-brand-pink font-bold tracking-widest text-xs mb-2">PAYMENT</div>
-            <p class="text-sm text-gray-200 font-bold">
-              Square（オンライン決済 / タッチ決済）対応
-            </p>
-            <p class="text-xs text-gray-400 mt-1">※その他のお支払い方法は応相談</p>
-          </div>
+        <div class="fact">
+          <p class="fact__label">ご家庭の負担</p>
+          <p class="fact__value">保護者当番なし</p>
+          <p class="fact__note">チームウェアの購入・試合への参加は任意です。</p>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- FEES -->
-  <section id="fees" class="py-24 bg-brand-dark clip-diagonal-rev relative">
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="text-center mb-12">
-        <span class="text-brand-pink font-display font-bold text-sm tracking-widest block mb-1">PRICE LIST</span>
-        <h2 class="text-4xl md:text-5xl font-black">会費</h2>
-        <p class="text-gray-400 mt-4 text-sm">※表示は税込価格です</p>
+  <div class="tabs" data-tabs id="areas">
+    <div class="tabs-bar">
+      <div class="container">
+        <div class="tablist" role="tablist" aria-label="エリア">
+          <button class="tab" type="button" role="tab" id="tab-hadano" aria-controls="hadano" aria-selected="true"><span class="tab__name">秦野</span><span class="tab__sub">火・水・木・土</span></button>
+          <button class="tab" type="button" role="tab" id="tab-yamato" aria-controls="yamato" aria-selected="false" tabindex="-1"><span class="tab__name">大和</span><span class="tab__sub">土・日</span></button>
+          <button class="tab" type="button" role="tab" id="tab-hiratsuka" aria-controls="hiratsuka" aria-selected="false" tabindex="-1"><span class="tab__name">平塚<span class="tab__badge">SOON</span></span><span class="tab__sub">金曜日</span></button>
+        </div>
       </div>
+    </div>
 
-      <!-- Annual Fee Highlight -->
-      <div class="max-w-5xl mx-auto mb-10">
-        <div class="bg-brand-pink text-black p-6 rounded-sm text-center md:text-left md:flex items-center justify-between shadow-lg transform hover:scale-[1.01] transition-transform">
+    <!-- ===== 秦野 ===== -->
+    <section class="tabpanel" id="hadano" role="tabpanel" aria-labelledby="tab-hadano" tabindex="0">
+      <div class="container">
+        <div class="panel-head">
           <div>
-            <h3 class="text-xl font-black font-display italic tracking-wide mb-1">ANNUAL FEE</h3>
-            <p class="font-bold text-sm md:text-base opacity-90">入会金・年会費（スポーツ安全保険料含む）</p>
+            <p class="panel-head__en">Hadano</p>
+            <h2 class="panel-head__title">秦野エリア</h2>
           </div>
-          <div class="mt-3 md:mt-0">
-            <span class="font-display text-4xl font-black">7,700</span><span class="text-lg font-bold ml-1">円/年</span>
-            <p class="text-xs font-bold opacity-80 mt-1 text-right">※年度途中入会は月割計算あり</p>
+          <div class="panel-head__meta">
+            <p class="meta-row"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>秦野カルチャーパーク陸上競技場</p>
+            <p class="meta-row"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>火・水・木・土</p>
           </div>
         </div>
-      </div>
 
-      <div class="max-w-5xl mx-auto grid md:grid-cols-2 gap-8">
-        <!-- Spot -->
-        <div class="bg-black/40 border border-white/10 p-6 md:p-8">
-          <h3 class="text-brand-pink font-bold text-xl mb-6 flex items-center gap-2">
-            <span class="block w-2 h-6 bg-brand-pink skew-x-[-12deg]"></span>
-            単発（都度参加）
-          </h3>
-          <ul class="space-y-5">
-            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed">
-              <div>
-                <span class="text-sm font-bold block">球技特化</span>
-                <span class="text-xs text-gray-500">秦野エリア</span>
+        <figure class="timetable">
+          <figcaption class="timetable__cap">
+            <span>週間スケジュール</span>
+            <span class="tt-legend" aria-hidden="true"><span>総合・通常クラス</span><span class="is-pro">アスリート・中高生クラス</span></span>
+          </figcaption>
+          <div class="tt">
+            <div class="tt-head" aria-hidden="true">
+              <span></span>
+              <div class="tt-scale"><span style="--x:14.2857%">17:00</span><span style="--x:42.8571%">18:00</span><span style="--x:71.4286%">19:00</span><span style="--x:100%">20:00</span></div>
+            </div>
+            <div class="tt-body">
+              <div class="tt-lines" aria-hidden="true"><i style="--x:14.2857%"></i><i style="--x:42.8571%"></i><i style="--x:71.4286%"></i></div>
+              <div class="tt-day">
+                <span class="tt-day__label">火</span>
+                <div class="tt-track">
+                  <span class="tt-bar" style="--s:5;--e:11"><b>通常</b><span>17:30–19:00</span></span>
+                  <span class="tt-bar tt-bar--pro" style="--s:5;--e:14"><b>小学生アスリート・中高生</b><span>17:30–19:45</span></span>
+                </div>
               </div>
-              <span class="font-display text-2xl font-bold">1,100<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/回</span></span>
-            </li>
-            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed">
-              <div>
-                <span class="text-sm font-bold block">小学生クラス</span>
-                <span class="text-xs text-gray-500">大和・日曜</span>
+              <div class="tt-day">
+                <span class="tt-day__label">水</span>
+                <div class="tt-track">
+                  <span class="tt-bar" style="--s:5;--e:11"><b>通常</b><span>17:30–19:00</span></span>
+                  <span class="tt-bar tt-bar--pro" style="--s:5;--e:14"><b>小学生アスリート・中高生</b><span>17:30–19:45</span></span>
+                </div>
               </div>
-              <span class="font-display text-2xl font-bold">1,650<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/回</span></span>
-            </li>
-            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed">
-              <div>
-                <span class="text-sm font-bold block">小中学生アスリート</span>
-                <span class="text-xs text-gray-500">大和・日曜</span>
+              <div class="tt-day">
+                <span class="tt-day__label">木</span>
+                <div class="tt-track">
+                  <span class="tt-bar" style="--s:3;--e:9"><b>通常</b><span>17:00–18:30</span></span>
+                  <span class="tt-bar tt-bar--pro" style="--s:3;--e:15"><b>小学生アスリート・中高生</b><span>17:00–20:00</span></span>
+                </div>
               </div>
-              <span class="font-display text-2xl font-bold">2,200<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/回</span></span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Monthly -->
-        <div class="bg-black/40 border border-white/10 p-6 md:p-8">
-          <h3 class="text-brand-pink font-bold text-xl mb-6 flex items-center gap-2">
-            <span class="block w-2 h-6 bg-brand-pink skew-x-[-12deg]"></span>
-            月額会員（秦野）
-          </h3>
-          <ul class="space-y-5">
-            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed">
-              <div>
-                <span class="text-sm font-bold block">総合＋通常クラス</span>
-                <span class="text-xs text-brand-pink">★参加し放題</span>
-              </div>
-              <span class="font-display text-2xl font-bold">6,600<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/月</span></span>
-            </li>
-            <li class="flex justify-between items-end border-b border-white/10 pb-2 border-dashed bg-brand-pink/10 border border-brand-pink/40 rounded-lg px-3 py-2">
-              <div>
-                <span class="text-sm font-bold block">中高生 部活動コース</span>
-                <span class="text-xs text-gray-500">※加入条件あり</span>
-              </div>
-              <span class="font-display text-2xl font-bold">8,800<span class="text-xs ml-1 font-sans font-normal text-gray-400">円/月</span></span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Athlete Members -->
-      <div class="max-w-5xl mx-auto mt-8">
-        <div class="bg-gradient-to-r from-brand-pink/20 to-transparent p-1">
-          <div class="bg-black/80 p-6 md:p-8">
-            <h3 class="text-white font-bold mb-6 text-lg text-center md:text-left">小学生アスリート／中高生クラス（会員）</h3>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-              <div class="bg-brand-gray p-4 border border-white/10">
-                <div class="text-sm text-gray-400 mb-1">週1会員</div>
-                <div class="font-display text-3xl font-bold">7,700<span class="text-sm ml-1 text-white/50">円</span></div>
-              </div>
-              <div class="bg-brand-gray p-4 border border-brand-pink/50 relative overflow-hidden">
-                <div class="absolute top-0 right-0 bg-brand-pink text-black text-[10px] px-2 py-0.5 font-bold">POPULAR</div>
-                <div class="text-sm text-brand-pink mb-1 font-bold">週2会員</div>
-                <div class="font-display text-3xl font-bold text-brand-pink">9,900<span class="text-sm ml-1 text-white/50">円</span></div>
-              </div>
-              <div class="bg-brand-pink text-black p-4">
-                <div class="text-sm text-black/70 font-bold mb-1">フリー会員</div>
-                <div class="font-display text-3xl font-bold">11,000<span class="text-sm ml-1 text-black/50">円</span></div>
+              <div class="tt-day">
+                <span class="tt-day__label">土</span>
+                <div class="tt-track">
+                  <span class="tt-bar" style="--s:1;--e:6"><b>総合</b><span>16:30–17:45</span></span>
+                  <span class="tt-bar" style="--s:3;--e:9"><b>通常</b><span>17:00–18:30</span></span>
+                  <span class="tt-bar tt-bar--pro" style="--s:3;--e:15"><b>小学生アスリート・中高生</b><span>17:00–20:00</span></span>
+                </div>
               </div>
             </div>
           </div>
+        </figure>
+
+        <section class="plan" aria-labelledby="plan-hadano-1">
+          <div class="plan__head">
+            <div>
+              <h3 class="plan__title" id="plan-hadano-1">総合クラス・通常クラス</h3>
+              <p class="plan__note">2クラス共通の月会費で、<span class="mark">参加し放題</span>です。</p>
+            </div>
+            <div class="plan__fee">
+              <p class="price price--rose price--lg"><span class="price__pre">月額</span><span class="price__num">6,600</span><span class="price__yen">円</span></p>
+            </div>
+          </div>
+          <div class="class-grid">
+            <article class="class-card">
+              <div class="class-card__head"><h4 class="class-card__name">総合クラス</h4><span class="tag">小学4年生以下</span></div>
+              <dl class="sched">
+                <div class="sched__row"><dt class="sched__days"><span class="day">土</span></dt><dd class="time">16:30<i>–</i>17:45</dd></div>
+              </dl>
+            </article>
+            <article class="class-card">
+              <div class="class-card__head"><h4 class="class-card__name">通常クラス</h4><span class="tag">小学生のみ</span></div>
+              <dl class="sched">
+                <div class="sched__row"><dt class="sched__days"><span class="day">火</span><span class="day">水</span></dt><dd class="time">17:30<i>–</i>19:00</dd></div>
+                <div class="sched__row"><dt class="sched__days"><span class="day">木</span><span class="day">土</span></dt><dd class="time">17:00<i>–</i>18:30</dd></div>
+              </dl>
+            </article>
+          </div>
+        </section>
+
+        <section class="plan" aria-labelledby="plan-hadano-2">
+          <div class="plan__head">
+            <div>
+              <h3 class="plan__title" id="plan-hadano-2">小学生アスリートクラス・中高生クラス</h3>
+              <p class="plan__note">通う回数に合わせて、会員の種類を選べます<span class="ib">（月額）。</span></p>
+            </div>
+            <div class="tiers">
+              <div class="tier"><p class="tier__name">週1会員</p><p class="price"><span class="price__num">7,700</span><span class="price__yen">円</span></p></div>
+              <div class="tier tier--popular"><span class="tier__badge">人気</span><p class="tier__name">週2会員</p><p class="price price--rose"><span class="price__num">9,900</span><span class="price__yen">円</span></p></div>
+              <div class="tier"><p class="tier__name">フリー会員</p><p class="price"><span class="price__num">11,000</span><span class="price__yen">円</span></p></div>
+            </div>
+          </div>
+          <div class="class-grid">
+            <article class="class-card">
+              <div class="class-card__head"><h4 class="class-card__name">小学生アスリートクラス</h4><span class="tag">競技志向</span></div>
+              <dl class="sched">
+                <div class="sched__row"><dt class="sched__days"><span class="day">火</span><span class="day">水</span></dt><dd class="time">17:30<i>–</i>19:45</dd></div>
+                <div class="sched__row"><dt class="sched__days"><span class="day">木</span></dt><dd class="time">17:00<i>–</i>20:00</dd></div>
+                <div class="sched__row"><dt class="sched__days"><span class="day">土</span></dt><dd class="time">17:00<i>–</i>20:00</dd></div>
+              </dl>
+            </article>
+            <article class="class-card">
+              <div class="class-card__head"><h4 class="class-card__name">中高生クラス</h4><span class="tag">部活併用可</span></div>
+              <dl class="sched">
+                <div class="sched__row"><dt class="sched__days"><span class="day">火</span><span class="day">水</span></dt><dd class="time">17:30<i>–</i>19:45</dd></div>
+                <div class="sched__row"><dt class="sched__days"><span class="day">木</span></dt><dd class="time">17:00<i>–</i>20:00</dd></div>
+                <div class="sched__row"><dt class="sched__days"><span class="day">土</span></dt><dd class="time">17:00<i>–</i>20:00</dd></div>
+              </dl>
+              <div class="extra-fee">
+                <span class="extra-fee__name">中高生 部活動コース<small>※加入条件あり</small></span>
+                <p class="price price--sm"><span class="price__num">8,800</span><span class="price__yen">円</span><span class="price__unit">／月</span></p>
+              </div>
+              <p class="class-card__notes">※大学生・実業団の方はお問い合わせください。</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ===== 大和 ===== -->
+    <section class="tabpanel" id="yamato" role="tabpanel" aria-labelledby="tab-yamato" tabindex="0">
+      <div class="container">
+        <div class="panel-head">
+          <div>
+            <p class="panel-head__en">Yamato</p>
+            <h2 class="panel-head__title">大和エリア</h2>
+          </div>
+          <div class="panel-head__meta">
+            <p class="meta-row"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>大和スポーツセンター陸上競技場</p>
+            <p class="meta-row"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>土曜・日曜開催</p>
+          </div>
         </div>
-        <p class="text-center text-sm text-gray-400 mt-6">
-          チームウェア購入・試合参加は任意／保護者当番なし
-        </p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer class="bg-brand-black text-gray-600 py-12 border-t border-white/5">
-    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
-      <div>
-        <a href="index.html" class="text-3xl font-black font-display italic tracking-tighter text-white block mb-1">
-          HAPPINESS<span class="text-brand-pink">AC</span>
-        </a>
-        <p class="text-xs text-gray-400">神奈川県（秦野・大和）ジュニア陸上クラブ</p>
-      </div>
+        <p class="callout"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg><span>土曜 17:00–18:00 は「小学生クラス」と「小学生アスリート・中学生クラス」が合同練習を行います。</span></p>
 
-      <div class="flex flex-wrap gap-x-6 gap-y-3 text-sm font-bold">
-        <a href="index.html#about" class="hover:text-white transition-colors">指導軸</a>
-        <a href="classes.html" class="hover:text-white transition-colors">クラス・会費</a>
-        <a href="coaches.html" class="hover:text-white transition-colors">指導者</a>
-        <a href="https://form.run/@happiness-ac--1611570580" target="_blank" class="text-brand-pink hover:text-white transition-colors">お問い合わせ</a>
-      </div>
+        <figure class="timetable">
+          <figcaption class="timetable__cap">
+            <span>週間スケジュール</span>
+            <span class="tt-legend" aria-hidden="true"><span>小学生クラス</span><span class="is-pro">アスリートクラス</span></span>
+          </figcaption>
+          <div class="tt">
+            <div class="tt-head" aria-hidden="true">
+              <span></span>
+              <div class="tt-scale"><span style="--x:14.2857%">17:00</span><span style="--x:42.8571%">18:00</span><span style="--x:71.4286%">19:00</span><span style="--x:100%">20:00</span></div>
+            </div>
+            <div class="tt-body">
+              <div class="tt-lines" aria-hidden="true"><i style="--x:14.2857%"></i><i style="--x:42.8571%"></i><i style="--x:71.4286%"></i></div>
+              <div class="tt-day">
+                <span class="tt-day__label">土</span>
+                <div class="tt-track">
+                  <span class="tt-bar" style="--s:3;--e:7"><b>小学生</b><span>17:00–18:00</span></span>
+                  <span class="tt-bar tt-bar--pro" style="--s:3;--e:11"><b>小学生アスリート・中学生</b><span>17:00–19:00</span></span>
+                </div>
+              </div>
+              <div class="tt-day">
+                <span class="tt-day__label">日</span>
+                <div class="tt-track">
+                  <span class="tt-bar" style="--s:5;--e:11"><b>小学生</b><span>17:30–19:00</span></span>
+                  <span class="tt-bar tt-bar--pro" style="--s:5;--e:13"><b>小中学生アスリート</b><span>17:30–19:30</span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </figure>
 
-      <div class="text-xs text-gray-500 border-t border-gray-800 w-full md:w-auto md:border-none pt-4 md:pt-0">
-        &copy; HappinessAC All Rights Reserved.
-      </div>
-    </div>
-  </footer>
+        <section class="plan" aria-labelledby="plan-yamato-sat">
+          <div class="plan__head">
+            <div>
+              <h3 class="plan__title" id="plan-yamato-sat">土曜クラス</h3>
+              <p class="plan__note">月会費制です。<span class="mark">振替は日曜の大和クラスにて実施</span>します。</p>
+              <p class="plan__coach"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.2-3.8 4.2-5.8 7.5-5.8s6.3 2 7.5 5.8"/></svg>担当コーチ：<a href="coaches.html#kondo">近藤 俊介</a><small>中距離の現役選手</small></p>
+            </div>
+          </div>
+          <div class="class-grid">
+            <article class="class-card">
+              <div class="class-card__head"><h4 class="class-card__name">小学生クラス</h4><span class="tag tag--ink">土曜</span></div>
+              <dl class="sched">
+                <div class="sched__row"><dt class="sched__days"><span class="day">土</span></dt><dd class="time">17:00<i>–</i>18:00</dd></div>
+              </dl>
+              <p class="class-card__notes">※17:00–18:00 は合同練習</p>
+              <div class="class-card__fee"><span class="class-card__fee-label">月会費</span><p class="price price--rose"><span class="price__num">5,500</span><span class="price__yen">円</span><span class="price__unit">／月</span></p></div>
+            </article>
+            <article class="class-card">
+              <div class="class-card__head"><h4 class="class-card__name">小学生アスリート・中学生クラス</h4><span class="tag tag--ink">土曜</span></div>
+              <dl class="sched">
+                <div class="sched__row"><dt class="sched__days"><span class="day">土</span></dt><dd class="time">17:00<i>–</i>19:00</dd></div>
+              </dl>
+              <p class="class-card__notes">※17:00–18:00 は合同練習</p>
+              <div class="class-card__fee"><span class="class-card__fee-label">月会費</span><p class="price price--rose"><span class="price__num">7,700</span><span class="price__yen">円</span><span class="price__unit">／月</span></p></div>
+            </article>
+          </div>
+        </section>
 
-  <!-- Mobile Sticky CTA -->
-  <div class="sticky-cta md:hidden px-4 py-3 pb-6 safe-area-bottom">
-    <div class="grid grid-cols-2 gap-3">
-      <a href="https://lin.ee/0xMJ03O" target="_blank"
-         class="bg-[#06c755] text-white font-bold py-3.5 text-center rounded-sm shadow-lg flex items-center justify-center gap-2">
-         LINE相談
-      </a>
-      <a href="https://form.run/@happiness-ac--1611570580" target="_blank"
-         class="bg-brand-pink text-white font-bold py-3.5 text-center rounded-sm shadow-lg flex items-center justify-center gap-2">
-         体験申込 <span class="text-sm">→</span>
-      </a>
-    </div>
+        <section class="plan" aria-labelledby="plan-yamato-sun">
+          <div class="plan__head">
+            <div>
+              <h3 class="plan__title" id="plan-yamato-sun">日曜クラス</h3>
+              <p class="plan__note">1回ごとのお支払いで参加できます。</p>
+            </div>
+          </div>
+          <div class="class-grid">
+            <article class="class-card">
+              <div class="class-card__head"><h4 class="class-card__name">小学生クラス</h4><span class="tag tag--ink">日曜</span></div>
+              <dl class="sched">
+                <div class="sched__row"><dt class="sched__days"><span class="day">日</span></dt><dd class="time">17:30<i>–</i>19:00</dd></div>
+              </dl>
+              <div class="class-card__fee"><span class="class-card__fee-label">参加費</span><p class="price price--rose"><span class="price__num">1,650</span><span class="price__yen">円</span><span class="price__unit">／回</span></p></div>
+            </article>
+            <article class="class-card">
+              <div class="class-card__head"><h4 class="class-card__name">小中学生アスリートクラス</h4><span class="tag tag--ink">日曜</span></div>
+              <dl class="sched">
+                <div class="sched__row"><dt class="sched__days"><span class="day">日</span></dt><dd class="time">17:30<i>–</i>19:30</dd></div>
+              </dl>
+              <div class="class-card__fee"><span class="class-card__fee-label">参加費</span><p class="price price--rose"><span class="price__num">2,200</span><span class="price__yen">円</span><span class="price__unit">／回</span></p></div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- ===== 平塚（2027年春ごろ 開講予定） ===== -->
+    <section class="tabpanel" id="hiratsuka" role="tabpanel" aria-labelledby="tab-hiratsuka" tabindex="0">
+      <div class="container">
+        <div class="panel-head">
+          <div>
+            <p class="panel-head__en">Hiratsuka</p>
+            <h2 class="panel-head__title">平塚エリア</h2>
+          </div>
+          <div class="panel-head__meta">
+            <p class="meta-row"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>金曜日（2027年春ごろ 開講予定）</p>
+          </div>
+        </div>
+
+        <div class="soon">
+          <p class="soon__en">Coming Soon</p>
+          <h3 class="soon__title">金曜日 平塚クラス</h3>
+          <p class="soon__lead">2027年春ごろ、新設予定です。</p>
+          <dl class="soon__list">
+            <div><dt>曜日</dt><dd>金曜日</dd></div>
+            <div><dt>開講</dt><dd>2027年春ごろ（予定）</dd></div>
+            <!-- 予定の時間は 17:00–19:30。公開するときは下の「決まり次第お知らせします」を書き換える -->
+            <div><dt>時間・会場</dt><dd>決まり次第お知らせします</dd></div>
+            <div><dt>対象・会費</dt><dd>決まり次第お知らせします</dd></div>
+          </dl>
+          <div class="btn-row soon__actions">
+            <a class="btn btn--line" href="https://lin.ee/0xMJ03O" target="_blank" rel="noopener">LINEで問い合わせる</a>
+            <a class="btn btn--ghost" href="https://form.run/@happiness-ac--1611570580" target="_blank" rel="noopener">フォームで問い合わせる</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 
-  <!-- Common Footer -->
-  <footer class="site-footer">
-    <nav class="footer-nav">
-      <a href="index.html">トップ</a>
-      <a href="classes.html" class="active">クラス・会費</a>
-      <a href="coaches.html">指導者</a>
-      <a href="online-personal.html">オンライン</a>
-      <a href="results.html">実績</a>
-      <a href="contact.html">体験・問合せ</a>
-    </nav>
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="container cta-band__inner">
+      <div>
+        <p class="eyebrow">Trial</p>
+        <h2 class="cta-band__title" id="cta-title">まずは体験から。<br>お気軽にご相談ください。</h2>
+        <p class="cta-band__text">無理な勧誘は一切いたしません。</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn--primary" href="contact.html">体験・問い合わせ<svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a class="btn btn--on-night" href="https://lin.ee/0xMJ03O" target="_blank" rel="noopener">LINEで相談</a>
+      </div>
+    </div>
+  </section>
+</main>
 
-    <a class="back-to-top" href="index.html">← トップページへ戻る</a>
-    <div class="copyright">© HappinessAC All Rights Reserved.</div>
-  </footer>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="brand" href="index.html"><span class="brand__mark">HAPPINESS<b>AC</b></span></a>
+        <p class="footer-brand__text">神奈川県（秦野・大和）ジュニア陸上クラブ</p>
+        <div class="footer-actions">
+          <a class="btn btn--primary btn--sm" href="https://form.run/@happiness-ac--1611570580" target="_blank" rel="noopener">体験・問い合わせフォーム</a>
+          <a class="btn btn--line btn--sm" href="https://lin.ee/0xMJ03O" target="_blank" rel="noopener">LINEで相談</a>
+        </div>
+      </div>
+      <nav class="footer-nav" aria-label="サイトマップ">
+        <p class="footer-label">Menu</p>
+        <ul>
+          <li><a href="index.html">トップ</a></li>
+          <li><a href="classes.html">クラス・会費</a></li>
+          <li><a href="coaches.html">指導者</a></li>
+          <li><a href="online-personal.html">オンライン</a></li>
+          <li><a href="results.html">実績</a></li>
+          <li><a href="contact.html">体験・問合せ</a></li>
+        </ul>
+      </nav>
+      <div class="footer-sns">
+        <p class="footer-label">Follow</p>
+        <ul>
+          <li><a href="https://www.youtube.com/@virds2761" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.5 9.5v5l4.3-2.5-4.3-2.5Z"/></svg>古藤監督のYouTube</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-copy">
+      <span>&copy; HappinessAC All Rights Reserved.</span>
+      <a href="#top">ページの先頭へ</a>
+    </div>
+  </div>
+</footer>
 
+<!-- スマホ用：画面の下に固定するタブ（どこまでスクロールしても各ページへ移動できる） -->
+<nav class="dock" aria-label="ページ切り替え">
+  <ul class="dock__list">
+    <li><a class="dock__link" href="index.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 4l8.5 6.5"/><path d="M5.5 9v11h13V9"/><path d="M10 20v-5.5h4V20"/></svg></span>トップ</a></li>
+    <li><a class="dock__link" href="classes.html" aria-current="page"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span>クラス・会費</a></li>
+    <li><a class="dock__link" href="coaches.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 20.5c1.2-3.8 4.2-5.8 7.5-5.8s6.3 2 7.5 5.8"/></svg></span>指導者</a></li>
+    <li><a class="dock__link" href="online-personal.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 5.5h15v10.5H10l-5.5 4v-14.5Z"/><path d="M8.5 10.8h.01M12 10.8h.01M15.5 10.8h.01"/></svg></span>オンライン</a></li>
+    <li><a class="dock__link" href="results.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4.5h8V10a4 4 0 0 1-8 0V4.5Z"/><path d="M16 6h3.5v1.2A3.8 3.8 0 0 1 15.7 11M8 6H4.5v1.2A3.8 3.8 0 0 0 8.3 11"/><path d="M12 14v3.5M8.5 20h7"/></svg></span>実績</a></li>
+    <li><a class="dock__link dock__link--cta" href="contact.html"><span class="dock__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5 3.5 10.6l6.6 2.6 2.7 6.8 7.7-16.5Z"/><path d="M10.1 13.2l4.4-4.4"/></svg></span>体験・問合せ</a></li>
+  </ul>
+</nav>
+
+<script src="assets/site.js?v=20261018" defer onerror="document.documentElement.classList.remove('js')"></script>
 </body>
 </html>
